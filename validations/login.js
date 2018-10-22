@@ -11,14 +11,15 @@ module.exports = function validateLoginInput(data) {
         errors.email = "Email is not valid"
     }
 
-    if(!Validator.isEmpty(data.email)) {
+    if(Validator.isEmpty(data.email)) {
         errors.email = "Email is required"
     }
 
-    if(!Validator.isEmpty(data.password)) {
+    if(Validator.isEmpty(data.password)) {
         errors.password = "password is required"
     }
-
+    console.log(errors)
+    console.log(isEmpty(errors))
     return {
         errors,
         isValid: isEmpty(errors)
