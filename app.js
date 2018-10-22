@@ -9,12 +9,12 @@ const db = require('./config/keys').mongoURI;
 const passport = require('passport');
 require('./config/passport')(passport);
 
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 
 app.use(passport.initialize());
 
 app.get("/", (req, res) => res.send('Hello World'));
-app.use(bodyParser.urlencoded({ extended: false}));
-app.use(bodyParser.json());
 
 
 app.use("/api/users", users);

@@ -5,10 +5,18 @@ const User = require('../../models/User');
 const jsonwebtoken = require('jsonwebtoken');
 const key = require('../../config/keys');
 const passport = require('passport');
+const validateRegistrationInput = require('../../validations/register');
+const validateLoginInput = require('../../validations/login');
 
 
 
 router.post('/register', (req, res) => {
+    const {errors, isValid} = validateRegistrationInput(req.body);
+
+    if(!isValid) {
+        return res.status(400).json(errors)
+    }
+
     User.findOne({email: req.body.email}).then(user => {
         if (user) {
         //   errors.email = 'Email is already taken';
@@ -40,6 +48,12 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/login', (req, res) => {
+    const { errors, isValid} = validateLoginInput(req.body);
+    
+    if (!isValid) {
+        return res.status(400).json(errors)
+    }
+
     const email = req.body.email;
     const password = req.body.password;
     User.findOne({email})
