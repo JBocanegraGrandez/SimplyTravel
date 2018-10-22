@@ -3,7 +3,10 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 const jsonwebtoken = require('jsonwebtoken');
-const key = require('../../config/keys')
+const key = require('../../config/keys');
+const passport = require('passport');
+
+
 
 router.post('/register', (req, res) => {
     User.findOne({email: req.body.email}).then(user => {
@@ -23,7 +26,6 @@ router.post('/register', (req, res) => {
                     if (err) throw err;
                     newUser.password = hash;
                     newUser.save()
-                    .then 
                     .then(user => {
                         const payload = {id: user.id, email: user.email}
                         res.json({
@@ -62,6 +64,15 @@ router.post('/login', (req, res) => {
             }
         })
     })
+})
+
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+    res.json({
+        id: req.user.id,
+        email: req.user.email,
+        first_name: req.user.first_name,
+        last_name: req.user.last_name
+    });
 })
 
 router.get("/test", (req, res) => res.json({msg: "This is the users OG-route"}));

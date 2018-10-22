@@ -5,14 +5,21 @@ const port = process.env.Port || 5000;
 const users = require("./routes/api/users")
 const events = require("./routes/api/events")
 const bodyParser = require('body-parser');
+const db = require('./config/keys').mongoURI;
+const passport = require('passport');
+require('./config/passport')(passport);
 
+
+app.use(passport.initialize());
 
 app.get("/", (req, res) => res.send('Hello World'));
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
+
+
 app.use("/api/users", users);
 app.use("/api/events", events);
-const db = require('./config/keys').mongoURI;
+
 
 mongoose
     .connect(db)
