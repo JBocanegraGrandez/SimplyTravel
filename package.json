@@ -1,0 +1,26 @@
+{
+  "name": "worldtraveler",
+  "version": "1.0.0",
+  "description": "This is our WorldTraveler App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon --inspect app.js"
+  },
+  "author": "JBocanegraGrandez",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.4",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
