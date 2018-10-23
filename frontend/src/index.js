@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './App.jsx';
 import * as APIUtil from "./util/session_api_util";
 import jwt_decode from "jwt-decode";
 import configureStore from "./store/store";
