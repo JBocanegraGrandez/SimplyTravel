@@ -8,7 +8,7 @@ import {
     HashRouter
 } from 'react-router-dom';
 
-import MainHeader from './header/main_header_auth';
+import MainHeader from './header/main_header';
 import SignUpFormContainer from "./session_form/signup_form_container";
 import LogInFormContainer from "./session_form/login_form_container.jsx";
 

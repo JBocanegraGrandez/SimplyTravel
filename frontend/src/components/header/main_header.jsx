@@ -1,5 +1,5 @@
 import React from 'react';
-import MainHeaderAuth from './header_log_container.jsx';
+import MainHeaderAuth from './main_header_auth.jsx';
 const headerMain = () => (
     <div className="page-header-main">
         <div className="menu-container">
@@ -21,4 +21,4 @@ const headerMain = () => (
     </div>
 );
 
-export default mainHeader;
+export default headerMain;
