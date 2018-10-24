@@ -8,6 +8,9 @@ const passport = require('passport');
 const validateRegistrationInput = require('../../validations/register');
 const validateLoginInput = require('../../validations/login');
 
+router.get("/register", (req, res) =>
+  res.json({ msg: "BRO YOU THERE IS NO POINT DOING GET TO REGISTER U DUMBFUCK" })
+);
 
 
 router.post('/register', (req, res) => {
