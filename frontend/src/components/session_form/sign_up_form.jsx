@@ -44,66 +44,50 @@ class SignUpForm extends React.Component {
     }
 
     render() {
-        return (
-
-            <div className="auth-holder">
-                {this.renderErrors()}
-                <div className='auth-main'>
-                    <div className="main-left">
-                        <div className="main-left-wrapper">
-                            <form className="form" onSubmit={this.handleSubmit} className="login-form-box">
-                                <div className="signup-form-top-container">
-                                    <div className="top-signup-div"></div>
-                                    <div className="signup-form-top-text">
-                                        <h2 className="red-title">Sign Up for Simple Travel </h2>
-                                    </div>
-                                </div>
-                                <div className="signup-form-bot-container">
-                                    <div className="signup-form-bot">
-
-                                        <div className='name'>
-                                            <input type="text"
-                                                placeholder="First Name"
-                                                onChange={this.update('first_name')}
-                                                className="first-name"
-                                                value={this.state.first_name}
-                                                required
-                                            />
-
-                                            <input type="text"
-                                                placeholder="Last Name"
-                                                onChange={this.update('last_name')}
-                                                className="last-name"
-                                                value={this.state.last_name}
-                                                required
-                                            />
-                                        </div>
-
-                                        
-
-                                        <input type="password"
-                                            placeholder='Password'
-                                            onChange={this.update('password')}
-                                            className="login-input"
-                                            value={this.state.password}
-                                            required
-                                        />
-                                        <br />
-                                        <button className="red-button"
-                                            type="submit">Sign Up</button>
-                                        <div className="question2">
-                                            <p className="fine-print2">Already on Yelp?<Link to="/login" className="link"> Log in</Link></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+        return <div className="sign-up-container">
+            {this.renderErrors()}
+            <div className="auth-main">
+              <div className="main-left">
+                <div className="main-left-wrapper">
+                  <form className="form" onSubmit={this.handleSubmit} className="login-form-box">
+                    <div className="signup-form-top-container">
+                      <div className="top-signup-div" />
+                      <div className="signup-form-top-text">
+                        <h2 className="red-title">
+                          Sign Up for Simple Travel{" "}
+                        </h2>
+                      </div>
                     </div>
-                   
-                </div>
-            </div>
+                    <div className="signup-form-bot-container">
+                      <div className="signup-form-bot">
+                        <div className="name">
+                          <input type="text" placeholder="First Name" onChange={this.update("first_name")} className="first-name" value={this.state.first_name} required />
 
-        );
+                          <input type="text" placeholder="Last Name" onChange={this.update("last_name")} className="last-name" value={this.state.last_name} required />
+                        </div>
+                        <input type="email" value={this.state.email} placeholder="Email" onChange={this.update("email")} className="login-input" required />
+
+                        <input type="password" placeholder="Password" onChange={this.update("password")} className="login-input" value={this.state.password} required />
+                        <br />
+                        <button className="red-button" type="submit">
+                          Sign Up
+                        </button>
+                        <div className="question2">
+                          <p className="fine-print2">
+                            Already on Simple Travel?
+                            <Link to="/login" className="link">
+                              {" "}
+                              Log in
+                            </Link>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>;
     }
 }
 

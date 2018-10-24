@@ -1,5 +1,5 @@
 {
-  "name": "worldtraveler",
+  "name": "simplytravel",
   "version": "1.0.0",
   "description": "This is our WorldTraveler App",
   "main": "app.js",
@@ -19,13 +19,20 @@
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "express": "^4.16.4",
+    "google-maps-react": "^2.0.2",
     "jsonwebtoken": "^8.3.0",
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.3.6",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+<<<<<<< HEAD
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+=======
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-google-maps": "^9.4.5",
+>>>>>>> 83b7cf5eadb483835034a7f3a53e49dcd68707cc
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.0.5",
