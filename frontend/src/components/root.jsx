@@ -17,7 +17,6 @@ const Root = () => (
         <header>
            <MainHeader />
             <Link to="/" className="header-link">
-                <h1>Simply Travel</h1>
             </Link>
         </header>
         <Switch>
