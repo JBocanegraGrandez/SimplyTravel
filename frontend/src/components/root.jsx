@@ -6,7 +6,7 @@ import {
     Link,
     HashRouter
 } from 'react-router-dom';
-import MapContainer from './map/map';
+import EventsContainer from './events/EventsMapContainer';
 
 
 const Root = () => {
@@ -17,7 +17,7 @@ const Root = () => {
      </Link>
     </header>
     <Switch>
-      <Route path="/map" component={MapContainer}/>
+      <Route path="/map" component={EventsContainer}/>
     </Switch>
   </div>
  )
