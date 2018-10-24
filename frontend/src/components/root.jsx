@@ -11,6 +11,7 @@ import {
 import MainHeader from './header/main_header';
 import SignUpFormContainer from "./session_form/signup_form_container";
 import LogInFormContainer from "./session_form/login_form_container.jsx";
+import FlightPriceContainer from "./flight_price/flight_price_container";
 
 const Root = () => (
     <div>
@@ -21,6 +22,7 @@ const Root = () => (
             </Link>
         </header>
         <Switch>
+            <Route exact path="/flightprice" component={FlightPriceContainer} />
             <Route exact path="/login" component={LogInFormContainer} />
             <Route exact path="/signup" component={SignUpFormContainer} />
         </Switch>

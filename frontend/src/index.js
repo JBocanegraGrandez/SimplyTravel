@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = '/login';
         }
     }
+    window.getState = store.getState;
 
 
 ReactDOM.render(<App store={store}/>, document.getElementById('root'));

@@ -1,14 +1,16 @@
+const $ = window.$
+
 export const retrieveFlightPrice = () => {
-  return $.ajax {
+  return $.ajax ({
     type: 'GET',
-    url: `api/flightprice/`
-  }
-}
+    url: `/api/flightprice/`
+  });
+};
 
 export const setFlightPrice = (flightPrice) => {
-  return $.ajax {
+  return $.ajax ({
     type: 'POST',
-    url: `api/flightprice/`
+    url: `/api/flightprice/`,
     data: flightPrice
-  }
-}
+  });
+};

@@ -1,8 +1,8 @@
-import * as APIUtils from "../utils/destination_util";
+import * as APIUtils from "../util/destination_util";
 
 export const RECEIVE_DESTINATION = "RECEIVE_DESTINATION";
 
-export const getDestination = destination => {
+const getDestination = destination => {
   return {
     type: RECEIVE_DESTINATION,
     destination

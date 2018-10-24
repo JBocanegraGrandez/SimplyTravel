@@ -1,5 +1,4 @@
 import React from 'react';
-import FlightPricingContainer from './flight_price_container';
 import { Link } from 'react-router-dom';
 
 class FlightPrice extends React.Component {
@@ -8,11 +7,13 @@ class FlightPrice extends React.Component {
     this.state = {
       flightPrice: null
     }
+
+    this.flightPriceRequest = this.flightPriceRequest.bind(this)
   }
 
   componentDidMount () {
     this.props.fetchDestination();
-    this.props.fetchLocation();
+    // this.props.fetchLocation();
     this.props.fetchFlightPrice();
   }
 
@@ -32,21 +33,24 @@ class FlightPrice extends React.Component {
   }
 
   render () {
-    // if (this.state.flightPrice === null) {
-    //   flightprice = flightPriceRequest().results[0].fare.total_price
-    //   pinFlightPrice(flightprice);
-    //   this.setState({flightPrice: flightprice})
-    // } else {
-    //   flightprice = this.state.flightPrice;
-    // }
+    let flightprice;
+    if (this.state.flightPrice === null) {
+      flightprice = this.flightPriceRequest().results[0].fare.total_price
+      this.props.pinFlightPrice(flightprice);
+      this.setState({flightPrice: flightprice})
+    } else {
+      flightprice = this.state.flightPrice;
+    }
     return (
       <div className='flight-pricing'>
         <form className='destination-input'>
           <div className='flight-pricing-input'>
-            <h1>hi</h1>
+            {flightprice}
           </div>
         </form>
       </div> 
     )
   }
 }
+
+export default FlightPrice;

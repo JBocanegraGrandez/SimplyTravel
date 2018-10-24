@@ -1,14 +1,16 @@
+const $ = window.$
+
 export const retrieveUserLocation = () => {
-  return $.ajax {
+  return $.ajax ({
     type: 'GET',
-      url: `api/location/`
-  };
+    url: `/api/location/`
+  });
 };
 
 export const setUserLocation = (location) => {
-  return $.ajax {
+  return $.ajax ({
     type: 'POST',
-      url: `api/location/`
+    url: `/api/location/`,
     data: location
-  };
+  });
 };

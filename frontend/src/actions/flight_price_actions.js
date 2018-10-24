@@ -1,8 +1,8 @@
-import * as APIUtils from "../utils/flight_price_util";
+import * as APIUtils from "../util/flight_price_util";
 
 export const RECEIVE_FLIGHT_PRICE = "RECEIVE_FLIGHT_PRICE";
 
-export const getFlightPrice = (flightPrice) => {
+const getFlightPrice = (flightPrice) => {
   return {
     type: RECEIVE_FLIGHT_PRICE,
     flightPrice

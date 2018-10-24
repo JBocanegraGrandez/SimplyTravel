@@ -1,17 +1,17 @@
-import * as APIUtils from "../utils/location_util";
+import * as APIUtils from "../util/location_util";
 
 export const RECEIVE_LOCATION = 'RECEIVE_LOCATION';
 
-export const getLocation = (Location) => {
+export const getLocation = (location) => {
   return {
     type: RECEIVE_LOCATION,
-    location
+    location 
   };
 };
 
-export const fetchLocation = (location) => {
+export const fetchLocation = () => {
   return dispatch => {
-    return APIUtils.retrieveUserLocation(location).then((location) => {
+    return APIUtils.retrieveUserLocation().then((location) => {
       return dispatch(getLocation(location));
     });
   };
