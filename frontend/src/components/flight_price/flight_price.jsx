@@ -1,4 +1,6 @@
 import React from 'react';
+import FlightPriceItem from './flight_price_item';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 class FlightPrice extends React.Component {
@@ -6,17 +8,22 @@ class FlightPrice extends React.Component {
     super(props);
     this.state = {
       flight: null,
-      dropdownVisible: false,
-      dropdownVisibleTwo: false
+      dropdownVisible: false
     }
 
     this.flightPriceRequest = this.flightPriceRequest.bind(this)
+    this.renderDropDown = this.renderDropDown.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
-  componentDidMount () {
-    this.props.fetchDestination();
+  componentDidMount() {
+    // this.props.fetchDestination();
     // this.props.fetchLocation();
     // this.props.fetchFlightPrice();
+  }
+
+  componentWillMount() {
+    this.flightPriceRequest();
   }
 
   handleSubmit(e) {
@@ -26,12 +33,14 @@ class FlightPrice extends React.Component {
   }
 
   flightPriceRequest() { // locationAirport, destAirport
-      var xmlHttp = new XMLHttpRequest();
-      xmlHttp.open("GET", "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=SFO&destination=LON&departure_date=2018-12-25&number_of_results=1", false); // true for asynchronous
-      xmlHttp.send(null);
-      return JSON.parse(xmlHttp.responseText);
-
-    // credit: https://stackoverflow.com/questions/247483/http-get-request-in-javascript
+    axios.get("https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=SFO&destination=LON&departure_date=2018-12-25&number_of_results=1")
+      .then(response => {
+        this.setState({test: 'test'});
+        this.setState({flight: response.data})
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   stringifyBoolean(notString) {
@@ -42,62 +51,86 @@ class FlightPrice extends React.Component {
     }
   }
 
-  renderDropDown() {
-    let { dropdownVisible } = this.state;
-    return !dropdownVisible
+  renderDropDown(input) {
+    let dropdownVisible = this.state.dropdownVisible;
+    return (
+      !dropdownVisible
       ? null
-      : (
-        <div></div>
-  
-      }
+      : 
+      input
+    )
+  }
+
   toggleDropdown() {
     let dropdownVisible = !this.state.dropdownVisible;
     this.setState({ dropdownVisible });
   }
-  render () {
-    let flight;
-    if (this.state.flight === null) {
-      this.setState(this.flightPriceRequest());
-      console.log(flight);
-      if (flight.results[0].itineraries[0].outbound.flights.length > 1) {
 
-      } else {
-        let a = (
-          <div className="flight-info-container">
-            <div className="flight-info">Total Price: {this.state.flightPrice}</div>
-            <div className="flight-info">From: {this.state.location}</div>
-            <div className="flight-info">Destination: {this.state.destination}</div>
-            <div className="flight-info">Departure Date: {this.state.departure_date}</div>
-            <div className="flight-info">Return Date: {this.state.return_date}</div>
-            <div className="flight-info">Travel Class: {this.state.travel_class}</div>
-            <div className="flight-info">Flight Duration: {this.state.duration}</div>
-            <div className="flight-info">Refundable: {this.stringifyBoolean(this.state.refundable)}</div>
-            <form className="flight-booking" onSubmit={this.handleSubmit}>
-              <input type="submit" value="Book Now!" />
-            </form>
+  availFlight(flights) {
+    let outbound = this.state.flight.results[0].itineraries[0].outbound;
+    let lastFlight = outbound.flights[0];
+    console.log(lastFlight)
+    return(
+      <div>
+        <div className="initial-flight-display" onClick={(this.toggleDropdown)} >
+          <img className="flight-icon" src="" />
+          <div>Flight Price: {this.state.flight.results[0].fare.total_price}</div>
+          <div>Duration: {outbound.duration}</div>
+          <div>Path: 
+            {outbound.flights[0].origin.airport}
+            to {lastFlight.destination.airport}
           </div>
-        );
-      }
-    }
+          <div>Stops: {outbound.flights.length - 1}</div>
+          <div>One Way</div>
+        </div>
+        {this.renderDropDown(flights)}
+        <form className="flight-booking" onSubmit={this.handleSubmit}>
+          <input type="submit" value="Book Now!" />
+        </form>
+      </div>
+    )
+  }
 
+  noFlight() {
+    return(
+    <div className="initial-flight-display" >
+      <img className="flight-icon" src="" />
+      <div>Flight Price: -</div>
+      <div>Duration: -</div>
+      <div>Path: -</div>
+      <div>Stops: -</div>
+      <div>One Way</div>
+    </div>
+    )
+  }
+
+  render () {
+    let flights;
+    if (this.state.flight) {
+      flights = this.state.flight.results[0].itineraries[0].outbound.flights.reverse().map(
+        flight => {
+          return (
+            <FlightPriceItem flight={flight} />
+            // <div className="flight-info-container">
+            //   <div className="flight-info">From: {flight.origin.airport} Terminal: {flight.origin.terminal}</div>
+            //   <div className="flight-info">
+            //     Destination: {flight.destination.airport} 
+            //     Terminal: {flight.destination.terminal}
+            //   </div>
+            //   <div className="flight-info">Departure Date: {flight.departs_at}</div>
+            //   <div className="flight-info">Travel Class: {flight.booking_info.travel_class}</div>
+            // </div>
+          );
+        }
+      );
+      console.log(this.state)
+    }
     return (
       <div className="flight-info-main-container">
-        {this.renderDropDown()}
+        {flights ? this.availFlight(flights) : this.noFlight()}
       </div>
     );
   }
 }
 
 export default FlightPrice;
-
-// this.setState({
-//   flightPrice: flight.results[0].fare.total_price,
-//   location: flight.results[0].itineraries[0].outbound.flights[0].origin.airport, //has airport and terminal kv pair
-//   destination: flight.results[0].itineraries[0].outbound.flights[0].destination.airport, //has airport and terminal kv pair
-//   departure_date: flight.results[0].itineraries[0].outbound.flights[0].departs_at,
-//   return_date: flight.results[0].itineraries[0].outbound.flights[0].arrives_at,
-//   adultPassenger: flight.results[0].fare.price_per_adult.total_fare,
-//   travel_class: flight.results[0].itineraries[0].outbound.flights[0].booking_info.travel_class,
-//   duration: flight.results[0].itineraries[0].outbound.duration,
-//   refundable: flight.results[0].fare.restrictions.refundable
-// });

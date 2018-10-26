@@ -20,5 +20,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FlightPrice);
+export default connect(null, null)(FlightPrice);
 // fetchLocation: () => dispatch(fetchLocation),
