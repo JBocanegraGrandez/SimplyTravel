@@ -202,3 +202,197 @@ table {
   height: 100vh;
   width: 100vw;
 }
+
+.selector-control {
+  position: absolute;
+  z-index: 1;
+  top: 25px;  
+  left: 13px;
+}
+
+/* Sidebar Container */
+
+.sidenav {
+  position: fixed;
+  z-index: 1;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+  transition: 1.2s;
+  padding-top: 60px;
+  width: 600px;
+  height: 100vh;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  font-size: 36px;
+  margin-left: 50px;
+  width: 35px;
+  height: 35px;
+  top: 15px;
+  right: 15px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.location-container {
+  text-align: left;
+  font-size: 30px;
+  font-family: serif;
+  padding-left: 50px;
+  padding-bottom: 10px;
+  padding-top: 15px;
+}
+
+.aboutus-container {
+  background-color: #fff;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  margin: 18px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
+}
+
+
+.flights-container {
+  background-color: #fff;
+  height: 425px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  margin: 18px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
+}
+
+
+.hotels-container {
+  background-color: #fff;
+  height: 305px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  margin: 18px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
+}
+
+.dropdown-categories {
+  line-height: 26px;
+  padding-left: 20px;
+}
+
+.drink-icon {
+  height: 30px;
+  width: 30px;
+  padding-left: 18px;
+}
+
+.wifi-icon {
+  height: 30px;
+  width: 30px;
+  padding-left: 18px;
+}
+
+.hotel-icon {
+    height: 130px;
+    width: 130px;
+  position: absolute;
+  right: 50px;
+  margin-top: -30px;
+}
+
+.hotel-name {
+  font-size: 31px;
+  font-weight: 600;
+  font-family: serif;
+}
+
+.hotel-location {
+
+}
+
+.hotel-rating {
+  padding-right: 10px;
+  display: table-cell;
+  width: 100%;
+  white-space: normal;
+  padding-bottom: 20px;
+  padding-top: 22px;
+  font-size: 18px;
+  font-family: cursive;
+}
+
+.hotel-name-container {
+  color: #000;
+  font-size: 15px;
+  line-height: 16px;
+  padding-bottom: 2px;
+  white-space: normal;
+}
+
+.hotels-inside-container {
+  padding-left: 45px;
+  padding-bottom: 16px;
+  padding-top: 25px;
+}
+
+.hotel-price {
+  font-size: 28px;
+  font-weight: 500;
+  font-family: serif;
+  padding-left: 43px;
+  position: fixed;
+  padding-top: 18px;
+}
+
+.hotels-inside-container-2 {
+  height: 250px;
+  padding: 50px;
+  padding-right: 160px;
+  letter-spacing: 1px;
+}
+
+.rating-img {
+  width: 90px;
+  padding-left: 16px;
+}
+
+.optional-breakfast {
+  padding-left: 15px;
+}
+
+.optional-wifi {
+  padding-left: 45px;
+}
+
+.open-button {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  width: 31px;
+  height: 31px;
+  left: 16px;
+}
+
+.open-button-container {
+  position: relative;
+}

@@ -1,6 +1,7 @@
 /*global google*/
 import React from "react";
 import { merge } from "lodash";
+import SidebarContainer from '../sidebar/sidebar_container';
 
 class Map extends React.Component {
   constructor(props) {
@@ -311,69 +312,68 @@ class Map extends React.Component {
       zoom: 13,
       mapTypeControl: false
     };
-    // wrap the mapDOMNode in a Google Map
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     this.state = {
       markers: {},
-      currentListing: null,
+      currentLocation: null,
     };
-    this.addListingToMap = this.addListingToMap.bind(this);
+    // this.addLocationToMap = this.addLocationToMap.bind(this);
   }
 
-  createNewMarker(lat, lng, map, marker, id) {
-    const categoryMarkers = {
-      food: {
-        icon: `<span class="map-icon map-icon-restaurant"></span>`,
-        color: "#0E77E9",
-      },
-      misc: {
-        icon: `<span class="map-icon map-icon-search"></span>`,
-        color: "#000000",
-      },
-      hospital: {
-        icon: `<span class="map-icon map-icon-doctor"></span>`,
-        color: "#F45B69",
-      },
-    };
+  // createNewMarker(lat, lng, map, marker, id) {
+  //   const categoryMarkers = {
+  //     food: {
+  //       icon: `<span class="map-icon map-icon-restaurant"></span>`,
+  //       color: "#0E77E9",
+  //     },
+  //     misc: {
+  //       icon: `<span class="map-icon map-icon-search"></span>`,
+  //       color: "#000000",
+  //     },
+  //     hospital: {
+  //       icon: `<span class="map-icon map-icon-doctor"></span>`,
+  //       color: "#F45B69",
+  //     },
+  //   };
 
-    // return new mapIcons.Marker({
-    //   position: { lat, lng },
-    //   map,
-    //   icon: {
-    //     path: mapIcons.shapes.MAP_PIN,
-    //     fillColor: categoryMarkers[marker].color,
-    //     fillOpacity: 1,
-    //     strokeColor: "",
-    //     strokeWeight: 0,
-    //     scale: 9 / 10,
-    //   },
-    //   map_icon_label: categoryMarkers[marker].icon,
-    // });
-  }
+  //   // return new mapIcons.Marker({
+  //   //   position: { lat, lng },
+  //   //   map,
+  //   //   icon: {
+  //   //     path: mapIcons.shapes.MAP_PIN,
+  //   //     fillColor: categoryMarkers[marker].color,
+  //   //     fillOpacity: 1,
+  //   //     strokeColor: "",
+  //   //     strokeWeight: 0,
+  //   //     scale: 9 / 10,
+  //   //   },
+  //   //   map_icon_label: categoryMarkers[marker].icon,
+  //   // });
+  // }
 
-  addListingToMap(listing) {
-    if (listing === null) return;
-    const marker = this.createNewMarker(
-      listing.latitude,
-      listing.longitude,
-      this.map,
-      listing.marker,
-      listing._id
-    );
+  // addLocationToMap(location) {
+  //   if (location === null) return;
+  //   const marker = this.createNewMarker(
+  //     location.latitude,
+  //     location.longitude,
+  //     this.map,
+  //     location.marker,
+  //     location._id
+  //   );
 
-    marker.addListener("click", () => this.props.open(listing._id));
-    marker.addListener("mouseover", () => this.props.set(listing._id));
-    marker.addListener("mouseout", () => this.props.clear());
+  //   marker.addListener("click", () => this.props.open(location._id));
+  //   marker.addListener("mouseover", () => this.props.set(location._id));
+  //   marker.addListener("mouseout", () => this.props.clear());
 
-    this.setState(prevState => {
-      const currentMarkers = prevState === null ? {} : prevState.markers;
-      const combinedMarkers = merge({}, currentMarkers, {
-        [listing._id]: marker,
-      });
+  //   this.setState(prevState => {
+  //     const currentMarkers = prevState === null ? {} : prevState.markers;
+  //     const combinedMarkers = merge({}, currentMarkers, {
+  //       [location._id]: marker,
+  //     });
 
-      return { markers: combinedMarkers };
-    });
-  }
+  //     return { markers: combinedMarkers };
+  //   });
+  // }
 
   updateStyle(e) {
     this.map.setOptions({ styles: this.styles[e.currentTarget.value] });
@@ -382,7 +382,8 @@ class Map extends React.Component {
   render() {
     return (
       <div>
-        <select onChange={this.updateStyle.bind(this)} id="style-selector" class="selector-control">
+        <SidebarContainer />
+        <select onChange={this.updateStyle.bind(this)} id="style-selector" className="selector-control">
           <option value="default">Default</option>
           <option value="silver">Silver</option>
           <option value="night">Night mode</option>
