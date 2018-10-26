@@ -91,7 +91,8 @@ table {
   width: 100%;
   height: 64px;
   /* position: absolute; */
-  background-color: #0073bb;
+  background-color: #147bcd;
+  background: linear-gradient(#51a9ee,#147bcd);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -108,7 +109,7 @@ table {
 .main-header-menu-left {
   font-size: 32px;
   font-family: Helvetica;
-  /* font-weight: 600; */
+  font-weight: 600;
   color: white;
 }
 
@@ -192,7 +193,7 @@ table {
   color: inherit;
 }
 
-/* LOG IN FORM */
+/* LOG IN/SIGN UP FORM */
 
 
 /* Flight */
@@ -214,4 +215,70 @@ table {
   font-size: 13px;
   color: rgba(0, 0, 0, 0.87);
   font-family: Arial, sans-serif;
+}
+
+.sign-up-container {
+  /* background-color: red; */
+  /* height: 630px; */
+  width: 400px;
+  padding: 20px;
+  /* border: 1px solid #e6e6e6; */
+}
+
+.auth-main {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+}
+
+.signup-form-bot-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form-bot {
+  display: flex;
+  flex-direction: column;
+}
+.signup-form-bot input {
+  margin-bottom: 9px;
+  font-size: 14px;
+  padding: 5px 9px;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+
+.sign-up-button {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid;
+  padding: 12px 18px 13px;
+  background-color: #147bcd;
+  background: linear-gradient(#51a9ee,#147bcd);
+  color: white;
+  border-color: #282c34;
+}
+
+.fine-print {
+  color: #999;
+  font-weight: normal;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.signup-title {
+  color: #0073bb;
+  width: 280px;
+}
+
+.link {
+  text-decoration: none;
+  color: #0066c0;
+  cursor: pointer;
+
 }

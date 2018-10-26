@@ -25,9 +25,14 @@
     "mongoose": "^5.3.6",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+<<<<<<< HEAD
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+=======
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-google-maps": "^9.4.5",
+>>>>>>> 83b7cf5eadb483835034a7f3a53e49dcd68707cc
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.0.5",
