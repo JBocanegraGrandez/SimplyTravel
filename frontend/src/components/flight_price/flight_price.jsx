@@ -1,7 +1,6 @@
 import React from 'react';
 import FlightPriceItem from './flight_price_item';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 class FlightPrice extends React.Component {
   constructor(props) {
@@ -35,7 +34,6 @@ class FlightPrice extends React.Component {
   flightPriceRequest() { // locationAirport, destAirport
     axios.get("https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=SFO&destination=LON&departure_date=2018-12-25&number_of_results=1")
       .then(response => {
-        this.setState({test: 'test'});
         this.setState({flight: response.data})
       })
       .catch(err => {
@@ -82,7 +80,7 @@ class FlightPrice extends React.Component {
           <div>Stops: {outbound.flights.length - 1}</div>
           <div>One Way</div>
         </div>
-        {this.renderDropDown(combinedFlights.reverse())}
+        {this.renderDropDown(combinedFlights)}
         <form className="flight-booking" onSubmit={this.handleSubmit}>
           <input type="submit" value="Book Now!" />
         </form>
@@ -109,16 +107,7 @@ class FlightPrice extends React.Component {
       combinedFlights = this.state.flight.results[0].itineraries[0].outbound.flights.map(
         flight => {
           return (
-            <FlightPriceItem flight={flight} />
-            // <div className="flight-info-container">
-            //   <div className="flight-info">From: {flight.origin.airport} Terminal: {flight.origin.terminal}</div>
-            //   <div className="flight-info">
-            //     Destination: {flight.destination.airport} 
-            //     Terminal: {flight.destination.terminal}
-            //   </div>
-            //   <div className="flight-info">Departure Date: {flight.departs_at}</div>
-            //   <div className="flight-info">Travel Class: {flight.booking_info.travel_class}</div>
-            // </div>
+            <FlightPriceItem key={flight.arrives_at} flight={flight} />
           );
         }
       );
