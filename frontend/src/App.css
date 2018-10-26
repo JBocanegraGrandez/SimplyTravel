@@ -341,20 +341,19 @@ auth-holder
 .selector-control {
   position: absolute;
   z-index: 1;
-  top: 25px;  
+  top: 20px;
   left: 13px;
 }
 
 /* Sidebar Container */
 
 .sidenav {
-  position: fixed;
+  position: absolute;
   z-index: 1;
   background-color: #f9f9f9;
   overflow-x: hidden;
   transition: 1.2s;
   padding-top: 60px;
-  width: 600px;
   height: 100vh;
 }
 
@@ -390,8 +389,8 @@ auth-holder
   text-align: left;
   font-size: 30px;
   font-family: serif;
-  padding-left: 50px;
-  padding-bottom: 10px;
+  padding-left: 75px;
+  padding-bottom: 2px;
   padding-top: 15px;
 }
 
@@ -495,7 +494,7 @@ auth-holder
   font-weight: 500;
   font-family: serif;
   padding-left: 43px;
-  position: fixed;
+  position: absolute;
   padding-top: 18px;
 }
 
@@ -522,10 +521,10 @@ auth-holder
 .open-button {
   position: absolute;
   z-index: 10;
-  top: 10px;
+  top: 12px;
   width: 31px;
   height: 31px;
-  left: 16px;
+  left: 25px;
 }
 
 .open-button-container {

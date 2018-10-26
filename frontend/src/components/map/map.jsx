@@ -3,6 +3,8 @@ import React from "react";
 import { merge } from "lodash";
 import SidebarContainer from '../sidebar/sidebar_container';
 
+var map;
+
 class Map extends React.Component {
   constructor(props) {
     super(props);
@@ -312,13 +314,19 @@ class Map extends React.Component {
       zoom: 13,
       mapTypeControl: false
     };
-    this.map = new google.maps.Map(this.mapNode, mapOptions);
+
+    setTimeout( () => {
+      this.map = new google.maps.Map(this.mapNode, mapOptions);
+    }, 2000);
+
     this.state = {
       markers: {},
       currentLocation: null,
     };
     // this.addLocationToMap = this.addLocationToMap.bind(this);
   }
+
+
 
   // createNewMarker(lat, lng, map, marker, id) {
   //   const categoryMarkers = {
@@ -378,6 +386,7 @@ class Map extends React.Component {
   updateStyle(e) {
     this.map.setOptions({ styles: this.styles[e.currentTarget.value] });
   }
+
 
   render() {
     return (
