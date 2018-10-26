@@ -42,6 +42,8 @@ class FlightPrice extends React.Component {
       })
   }
 
+  this is a test
+
   flightPriceRequest() { // locationAirport, destAirport
     axios.get("https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=SFO&destination=LON&departure_date=2018-12-25&number_of_results=1")
       .then(response => {
