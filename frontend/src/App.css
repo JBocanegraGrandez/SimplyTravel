@@ -232,7 +232,7 @@ table {
 .background-container {
   background-repeat: no-repeat;
   background-size: cover;
-  height: 1020px;
+  height: 100vh;
 }
 
 
