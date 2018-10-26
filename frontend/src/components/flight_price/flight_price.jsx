@@ -23,12 +23,23 @@ class FlightPrice extends React.Component {
 
   componentWillMount() {
     this.flightPriceRequest();
+    this.nearestFlight();
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.pinDestination(this.state)
       .then(() => this.props.history.push('/'));
+  }
+
+  nearestFlight() {
+    axios.get("https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=SFO&destination=LON&departure_date=2018-12-25&number_of_results=1")
+      .then(response => {
+        this.setState({flight: response.data})
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   flightPriceRequest() { // locationAirport, destAirport
