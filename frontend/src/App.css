@@ -530,3 +530,69 @@ auth-holder
 .open-button-container {
   position: relative;
 }
+
+/* HOTELS START HERE */
+
+hotels {
+  /* position: fixed; */
+  z-index: 1;
+  width: 600px;
+  height: 100vh;
+  padding-top: 60px;
+  background-color: #f9f9f9;
+  overflow-x:hidden;
+}
+ 
+.hotels-container {
+  max-height: 100%;
+}
+
+.individual-selection {
+  width: 100%;
+  height: 400px;
+}
+
+.hotel-stats-container {
+
+}
+
+.image-container {
+
+}
+
+.hotel-name-price-container {
+
+}
+
+.hotel-name {
+
+}
+
+.hotel-price {
+
+}
+
+.hotel-rating {
+
+}
+
+.hotel-address {
+
+}
+
+.marketing-text {
+  height: 200px;
+}
+
+.amenities {
+  height: 100px;
+  width: 100%;
+}
+
+.hotel-amenities-container {
+
+}
+
+.hotel-amenities {
+
+}
