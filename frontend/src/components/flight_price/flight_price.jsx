@@ -66,10 +66,9 @@ class FlightPrice extends React.Component {
     this.setState({ dropdownVisible });
   }
 
-  availFlight(flights) {
+  availFlight(combinedFlights) {
     let outbound = this.state.flight.results[0].itineraries[0].outbound;
-    let lastFlight = outbound.flights[0];
-    console.log(lastFlight)
+    let lastFlight = outbound.flights[outbound.flights.length - 1];
     return(
       <div>
         <div className="initial-flight-display" onClick={(this.toggleDropdown)} >
@@ -83,7 +82,7 @@ class FlightPrice extends React.Component {
           <div>Stops: {outbound.flights.length - 1}</div>
           <div>One Way</div>
         </div>
-        {this.renderDropDown(flights)}
+        {this.renderDropDown(combinedFlights.reverse())}
         <form className="flight-booking" onSubmit={this.handleSubmit}>
           <input type="submit" value="Book Now!" />
         </form>
@@ -105,9 +104,9 @@ class FlightPrice extends React.Component {
   }
 
   render () {
-    let flights;
+    let combinedFlights;
     if (this.state.flight) {
-      flights = this.state.flight.results[0].itineraries[0].outbound.flights.reverse().map(
+      combinedFlights = this.state.flight.results[0].itineraries[0].outbound.flights.map(
         flight => {
           return (
             <FlightPriceItem flight={flight} />
@@ -123,11 +122,10 @@ class FlightPrice extends React.Component {
           );
         }
       );
-      console.log(this.state)
     }
     return (
       <div className="flight-info-main-container">
-        {flights ? this.availFlight(flights) : this.noFlight()}
+        {combinedFlights ? this.availFlight(combinedFlights) : this.noFlight()}
       </div>
     );
   }
