@@ -141,6 +141,34 @@ table {
 .log-in-header-div:hover {
   border-bottom: 2px solid white;
 }
+.log-in-header-div2 button{
+  height: 37px;
+  width: 44px;
+  background-color: transparent;
+  color: white;
+  border-radius: 0px;
+  border: 0px;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 0px;
+}
+.world-logo{
+
+  /* position: relative;
+  top: -8px;
+  margin: 2px; */
+
+    position: relative;
+  top: -2px;
+  margin: -7px;
+}
+
+.log-in-header-div2:hover {
+  border-bottom: 2px solid white;
+}
 .about-us-header-div button{
   height: 37px;
   width: 100px;
@@ -195,22 +223,43 @@ table {
 
 /* LOG IN/SIGN UP FORM */
 
+/* .background-container {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+} */
+.background-container {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1020px;
+}
+
 
 .sign-up-container {
   /* background-color: red; */
   /* height: 630px; */
-  width: 400px;
+  /* width: 400px; */
   padding: 20px;
   /* border: 1px solid #e6e6e6; */
 }
 
 .auth-main {
-  display: flex;
+  /* opacity: 0.75; */
+  background: linear-gradient(transparent, white);
+  /* background-color: white; */
+  width: 300px;
+  display: flex; 
+  flex-direction: column;
   justify-content: center;
-  margin: 20px;
-  border: 1px solid #e6e6e6;
-  border-radius: 3px;
+  margin: 60px;
+  margin-left: 120px;
+  border: 1px groove black;
+  border-radius: 5px;
+  padding: 25px;
 }
+
+auth-holder
 
 .signup-form-bot-container {
   display: flex;

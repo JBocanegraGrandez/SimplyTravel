@@ -14,10 +14,12 @@ router.post('/register', (req, res) => {
     const {errors, isValid} = validateRegistrationInput(req.body);
 
     if(!isValid) {
+        debugger
         return res.status(400).json(errors)
     }
 
     User.findOne({email: req.body.email}).then(user => {
+        debugger
         if (user) {
         //   errors.email = 'Email is already taken';
           return res.status(400).json({email: "Email is already taken"})
@@ -36,9 +38,12 @@ router.post('/register', (req, res) => {
                     newUser.save()
                     .then(user => {
                         const payload = {id: user.id, email: user.email}
-                        res.json({
-                            success: true,
-                            user: payload
+                        jsonwebtoken.sign(payload, key.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+                            res.json({
+                                success: true,
+                                payload,
+                                token: 'Bearer ' + token
+                            })
                         })
                     })
                 })

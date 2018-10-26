@@ -6,6 +6,7 @@ const $ = window.$
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const CLEAR_ALL_ERRORS = 'CLEAR_ALL_ERRORS';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 
@@ -36,7 +37,7 @@ export const registerUser = (userData, history) => dispatch => {
        
         //set token to auth header
         setAuthToken(token);
-
+        debugger
         //decode token to get user data
         const decoded = jwt_decode(token);
 
@@ -45,10 +46,11 @@ export const registerUser = (userData, history) => dispatch => {
     })
     
     .catch(err => 
-        dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-            })
+        console.log(err)
+        // dispatch({
+        //     type: GET_ERRORS,
+        //     payload: err.response.data
+        //     })
         );
 };
 
@@ -80,6 +82,11 @@ export const setCurrentUser = decoded => {
         type: RECEIVE_CURRENT_USER,
         payload: decoded
     };
+};
+export const clearErrors = () => dispatch => {
+   dispatch({
+        type: CLEAR_ALL_ERRORS,
+    });
 };
 
 export const logoutUser = () => dispatch => {
