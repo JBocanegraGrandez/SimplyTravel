@@ -1,55 +1,122 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import FlightPriceItem from './flight_price_item';
+import axios from 'axios';
 
 class FlightPrice extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      flightPrice: null
+      flight: null,
+      dropdownVisible: false
     }
 
     this.flightPriceRequest = this.flightPriceRequest.bind(this)
+    this.renderDropDown = this.renderDropDown.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
-  componentDidMount () {
-    this.props.fetchDestination();
+  componentDidMount() {
+    // this.props.fetchDestination();
     // this.props.fetchLocation();
-    this.props.fetchFlightPrice();
+    // this.props.fetchFlightPrice();
+  }
+
+  componentWillMount() {
+    this.flightPriceRequest();
   }
 
   handleSubmit(e) {
     e.preventDefault();
-
+    this.props.pinDestination(this.state)
+      .then(() => this.props.history.push('/'));
   }
 
-  flightPriceRequest() {
-    // locationAirport, destAirport
-      var xmlHttp = new XMLHttpRequest();
-      xmlHttp.open("GET", "https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=SFO&destination=LON&departure_date=2018-12-25&number_of_results=1", false); // true for asynchronous
-      xmlHttp.send(null);
-      return JSON.parse(xmlHttp.responseText);
+  flightPriceRequest() { // locationAirport, destAirport
+    axios.get("https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=SFO&destination=LON&departure_date=2018-12-25&number_of_results=1")
+      .then(response => {
+        this.setState({flight: response.data})
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
-    // credit: https://stackoverflow.com/questions/247483/http-get-request-in-javascript
+  stringifyBoolean(notString) {
+    if (notString === true) {
+      return "Yes"
+    } else {
+      return "No"
+    }
+  }
+
+  renderDropDown(input) {
+    let dropdownVisible = this.state.dropdownVisible;
+    return (
+      !dropdownVisible
+      ? null
+      : 
+      input
+    )
+  }
+
+  toggleDropdown() {
+    let dropdownVisible = !this.state.dropdownVisible;
+    this.setState({ dropdownVisible });
+  }
+
+  availFlight(combinedFlights) {
+    let outbound = this.state.flight.results[0].itineraries[0].outbound;
+    let lastFlight = outbound.flights[outbound.flights.length - 1];
+    return(
+      <div>
+        <div className="initial-flight-display" onClick={(this.toggleDropdown)} >
+          <img className="flight-icon" src="" />
+          <div>Flight Price: {this.state.flight.results[0].fare.total_price}</div>
+          <div>Duration: {outbound.duration}</div>
+          <div>Path: 
+            {outbound.flights[0].origin.airport}
+            to {lastFlight.destination.airport}
+          </div>
+          <div>Stops: {outbound.flights.length - 1}</div>
+          <div>One Way</div>
+        </div>
+        {this.renderDropDown(combinedFlights)}
+        <form className="flight-booking" onSubmit={this.handleSubmit}>
+          <input type="submit" value="Book Now!" />
+        </form>
+      </div>
+    )
+  }
+
+  noFlight() {
+    return(
+    <div className="initial-flight-display" >
+      <img className="flight-icon" src="" />
+      <div>Flight Price: -</div>
+      <div>Duration: -</div>
+      <div>Path: -</div>
+      <div>Stops: -</div>
+      <div>One Way</div>
+    </div>
+    )
   }
 
   render () {
-    let flightprice;
-    if (this.state.flightPrice === null) {
-      flightprice = this.flightPriceRequest().results[0].fare.total_price
-      this.props.pinFlightPrice(flightprice);
-      this.setState({flightPrice: flightprice})
-    } else {
-      flightprice = this.state.flightPrice;
+    let combinedFlights;
+    if (this.state.flight) {
+      combinedFlights = this.state.flight.results[0].itineraries[0].outbound.flights.map(
+        flight => {
+          return (
+            <FlightPriceItem key={flight.arrives_at} flight={flight} />
+          );
+        }
+      );
     }
     return (
-      <div className='flight-pricing'>
-        <form className='destination-input'>
-          <div className='flight-pricing-input'>
-            {flightprice}
-          </div>
-        </form>
-      </div> 
-    )
+      <div className="flight-info-main-container">
+        {combinedFlights ? this.availFlight(combinedFlights) : this.noFlight()}
+      </div>
+    );
   }
 }
 
