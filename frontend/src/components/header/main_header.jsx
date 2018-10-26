@@ -1,6 +1,7 @@
 import React from 'react';
-import MainHeaderAuth from './main_header_auth.jsx';
+import MainHeaderAuth from './main_header_auth_container.jsx';
 import { Link } from "react-router-dom";
+
 // import mainHeaderCss from '../../../stylesheets/main-header-auth.scss'
 const headerMain = () => (
   <div className="main-header-container">
