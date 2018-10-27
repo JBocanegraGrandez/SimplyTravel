@@ -8,19 +8,30 @@ const getFlightPrice = (flightPrice) => {
     flightPrice
   };
 };
+//hits backend
+// export const fetchFlightPrice = () => {
+//   return dispatch => {
+//     return APIUtils.retrieveFlightPrice().then(flightPrice => {
+//       return dispatch(getFlightPrice(flightPrice));
+//     });
+//   };
+// };
+
+// export const pinFlightPrice = flightPrice => {
+//   return dispatch => {
+//     return APIUtils.setFlightPrice(flightPrice).then(flightPrice => {
+//       return dispatch(getFlightPrice(flightPrice));
+//     });
+//   };
+// };
+
+
+//only updates store
 
 export const fetchFlightPrice = () => {
-  return dispatch => {
-    return APIUtils.retrieveFlightPrice().then(flightPrice => {
-      return dispatch(getFlightPrice(flightPrice));
-    });
-  };
+  return (getFlightPrice());
 };
 
 export const pinFlightPrice = flightPrice => {
-  return dispatch => {
-    return APIUtils.setFlightPrice(flightPrice).then(flightPrice => {
-      return dispatch(getFlightPrice(flightPrice));
-    });
-  };
+  return (getFlightPrice(flightPrice));
 };
