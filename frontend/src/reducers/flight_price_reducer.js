@@ -1,5 +1,4 @@
 import { RECEIVE_FLIGHT_PRICE } from "../actions/flight_price_actions";
-import merge from "lodash/merge";
 
 const flightPriceReducer = (oldState = {}, action) => {
   Object.freeze(oldState);

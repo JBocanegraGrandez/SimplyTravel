@@ -1,5 +1,4 @@
 import { RECEIVE_DESTINATION } from "../actions/destination_actions";
-import merge from "lodash/merge";
 
 const destinationReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
