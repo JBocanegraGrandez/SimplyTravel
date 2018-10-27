@@ -8,6 +8,7 @@ const getFlightPrice = (flightPrice) => {
     flightPrice
   };
 };
+
 //hits backend
 // export const fetchFlightPrice = () => {
 //   return dispatch => {
@@ -25,12 +26,7 @@ const getFlightPrice = (flightPrice) => {
 //   };
 // };
 
-
 //only updates store
-
-export const fetchFlightPrice = () => {
-  return (getFlightPrice());
-};
 
 export const pinFlightPrice = flightPrice => {
   return (getFlightPrice(flightPrice));

@@ -19,21 +19,17 @@ class FlightPrice extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchDestination();
-    // this.props.fetchLocation();
-    // this.props.fetchFlightPrice();
-    this.props.pinFlightPrice({ flightPrice: 69.99 })
-
   }
   
   componentWillMount() {
-    // this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
+  // this.nearestAirport({this.props.location.long}, {this.props.location.lat}, {this.props.destination.long}, {this.props.destination.lat}); // Appacademy -> france
+  // this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props
-      .pinDestination(this.state)
+      .pinFlightPrice({flight: this.state.flight, destinationAirport: this.state.destinationAirport})
       .then(() => this.props.history.push("/"));
   }
 
@@ -67,6 +63,7 @@ class FlightPrice extends React.Component {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate() + 1;
+    //need to padd months if below 10
     console.log(year)
     console.log(month)
     console.log(day)
@@ -131,7 +128,7 @@ class FlightPrice extends React.Component {
     return (
       <div className="initial-flight-display">
         <img className="flight-icon" src="" />
-        <div>Flight Price: {this.state.flightPrice}</div>
+        <div>Flight Price: -</div>
         <div>Duration: -</div>
         <div>Path: -</div>
         <div>Stops: -</div>
