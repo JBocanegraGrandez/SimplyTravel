@@ -7,10 +7,13 @@ class FlightPrice extends React.Component {
     super(props);
     this.state = {
       flight: null,
+      currentDate: null,
+      nearestAirport: null,
+      destinationAirport: null,
       dropdownVisible: false
-    }
+    };
 
-    this.flightPriceRequest = this.flightPriceRequest.bind(this)
+    this.flightPriceRequest = this.flightPriceRequest.bind(this);
     this.renderDropDown = this.renderDropDown.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
@@ -22,54 +25,72 @@ class FlightPrice extends React.Component {
   }
 
   componentWillMount() {
-    this.flightPriceRequest();
-    this.nearestFlight();
+    this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.pinDestination(this.state)
-      .then(() => this.props.history.push('/'));
+    this.props
+      .pinDestination(this.state)
+      .then(() => this.props.history.push("/"));
   }
 
-  nearestFlight() {
-    axios.get("https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=SFO&destination=LON&departure_date=2018-12-25&number_of_results=1")
+  nearestAirport(nearlong, nearlat, destlong, destlat) {
+    axios
+      .get(
+        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&latitude=${nearlat}&longitude=${nearlong}`
+        )
       .then(response => {
-        this.setState({flight: response.data})
+        this.setState({ nearestAirport: response.data });
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
+      });
+
+    axios
+      .get(
+        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&latitude=${destlat}&longitude=${destlong}`
+      )
+      .then(response => {
+        this.setState({ destinationAirport: response.data });
       })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
-  this is a test
 
-  flightPriceRequest() { // locationAirport, destAirport
-    axios.get("https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=SFO&destination=LON&departure_date=2018-12-25&number_of_results=1")
+  flightPriceRequest(locAirport, destAirport) {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate() + 1;
+    console.log(year)
+    console.log(month)
+    console.log(day)
+    axios
+      .get(
+      `https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=${locAirport}&destination=${destAirport}&departure_date=${year}-${month}-${day}&number_of_results=1`
+      )
       .then(response => {
-        this.setState({flight: response.data})
+        this.setState({ flight: response.data });
       })
       .catch(err => {
-        console.log(err)
-      })
+        console.log(err);
+      });
   }
 
   stringifyBoolean(notString) {
     if (notString === true) {
-      return "Yes"
+      return "Yes";
     } else {
-      return "No"
+      return "No";
     }
   }
 
   renderDropDown(input) {
     let dropdownVisible = this.state.dropdownVisible;
-    return (
-      !dropdownVisible
-      ? null
-      : 
-      input
-    )
+    return !dropdownVisible ? null : input;
   }
 
   toggleDropdown() {
@@ -80,13 +101,16 @@ class FlightPrice extends React.Component {
   availFlight(combinedFlights) {
     let outbound = this.state.flight.results[0].itineraries[0].outbound;
     let lastFlight = outbound.flights[outbound.flights.length - 1];
-    return(
+    return (
       <div>
-        <div className="initial-flight-display" onClick={(this.toggleDropdown)} >
+        <div className="initial-flight-display" onClick={this.toggleDropdown}>
           <img className="flight-icon" src="" />
-          <div>Flight Price: {this.state.flight.results[0].fare.total_price}</div>
+          <div>
+            Flight Price: {this.state.flight.results[0].fare.total_price}
+          </div>
           <div>Duration: {outbound.duration}</div>
-          <div>Path: 
+          <div>
+            Path:
             {outbound.flights[0].origin.airport}
             to {lastFlight.destination.airport}
           </div>
@@ -98,30 +122,32 @@ class FlightPrice extends React.Component {
           <input type="submit" value="Book Now!" />
         </form>
       </div>
-    )
+    );
   }
 
   noFlight() {
-    return(
-    <div className="initial-flight-display" >
-      <img className="flight-icon" src="" />
-      <div>Flight Price: -</div>
-      <div>Duration: -</div>
-      <div>Path: -</div>
-      <div>Stops: -</div>
-      <div>One Way</div>
-    </div>
-    )
+    return (
+      <div className="initial-flight-display">
+        <img className="flight-icon" src="" />
+        <div>Flight Price: -</div>
+        <div>Duration: -</div>
+        <div>Path: -</div>
+        <div>Stops: -</div>
+        <div>One Way</div>
+      </div>
+    );
   }
 
-  render () {
+  render() {
     let combinedFlights;
+    if (this.state.nearestAirport !== null && this.state.destinationAirport !== null) {
+      this.flightPriceRequest(this.state.nearestAirport[0].airport, this.state.destinationAirport[0].airport);
+    }
+
     if (this.state.flight) {
       combinedFlights = this.state.flight.results[0].itineraries[0].outbound.flights.map(
         flight => {
-          return (
-            <FlightPriceItem key={flight.arrives_at} flight={flight} />
-          );
+          return <FlightPriceItem key={flight.arrives_at} flight={flight} />;
         }
       );
     }
