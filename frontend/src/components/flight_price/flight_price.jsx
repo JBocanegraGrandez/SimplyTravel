@@ -29,7 +29,7 @@ class FlightPrice extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props
-      .pinDestination(this.state)
+      .pinFlightPrice({flight: this.state.flight, destinationAirport: this.state.destinationAirport})
       .then(() => this.props.history.push("/"));
   }
 
@@ -63,6 +63,7 @@ class FlightPrice extends React.Component {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate() + 1;
+    //need to padd months if below 10
     console.log(year)
     console.log(month)
     console.log(day)
