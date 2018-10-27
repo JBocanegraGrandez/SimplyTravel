@@ -1,6 +1,4 @@
-
-// import { RECEIVE_LOCATION } from "../actions/location_actions.js";
-const RECEIVE_LOCATION = "RECEIVE_LOCATION";
+import { RECEIVE_LOCATION } from "../actions/location_actions.js";
 
 const locationReducer = (oldState = {}, action) => {
   Object.freeze(oldState);

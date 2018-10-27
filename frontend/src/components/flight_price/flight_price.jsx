@@ -19,15 +19,11 @@ class FlightPrice extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchDestination();
-    // this.props.fetchLocation();
-    // this.props.fetchFlightPrice();
-    this.props.pinFlightPrice({ flightPrice: 69.99 })
-
   }
   
   componentWillMount() {
-    // this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
+  // this.nearestAirport({this.props.location.long}, {this.props.location.lat}, {this.props.destination.long}, {this.props.destination.lat}); // Appacademy -> france
+  // this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
   }
 
   handleSubmit(e) {
@@ -131,7 +127,7 @@ class FlightPrice extends React.Component {
     return (
       <div className="initial-flight-display">
         <img className="flight-icon" src="" />
-        <div>Flight Price: {this.state.flightPrice}</div>
+        <div>Flight Price: -</div>
         <div>Duration: -</div>
         <div>Path: -</div>
         <div>Stops: -</div>

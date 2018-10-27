@@ -9,18 +9,28 @@ const getDestination = destination => {
   };
 };
 
-export const fetchDestination = destination => {
-  return dispatch => {
-    return APIUtils.retrieveDestination(destination).then(destination => {
-      return dispatch(getDestination(destination));
-    });
-  };
+// hits backend
+// export const fetchDestination = destination => {
+//   return dispatch => {
+//     return APIUtils.retrieveDestination(destination).then(destination => {
+//       return dispatch(getDestination(destination));
+//     });
+//   };
+// };
+
+// export const pinDestination = destination => {
+//   return dispatch => {
+//     return APIUtils.setDestination(destination).then(destination => {
+//       return dispatch(getDestination(destination));
+//     });
+//   };
+// };
+
+//only updates store
+export const fetchDestination = () => {
+  return (getDestination());
 };
 
 export const pinDestination = destination => {
-  return dispatch => {
-    return APIUtils.setDestination(destination).then(destination => {
-      return dispatch(getDestination(destination));
-    });
-  };
+   return (getDestination(destination));
 };
