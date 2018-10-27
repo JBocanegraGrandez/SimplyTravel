@@ -546,7 +546,8 @@ auth-holder
    height: 180vh;
  
    z-index: -1;
-   animation: 30s bg linear infinite;
+   animation: 6s bg alternate infinite;
+
 }
 
 @keyframes bg {
