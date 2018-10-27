@@ -655,3 +655,10 @@ hotels {
   padding-left: 65px;
   padding-right: 63px;
 }
+
+/* Home Seach Bar  */
+
+.home-search-bar-container {
+  margin: 0 auto;
+  width: 50%;
+}
