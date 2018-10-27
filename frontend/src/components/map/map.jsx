@@ -1,13 +1,17 @@
-/*global google*/
 import React from "react";
 import { merge } from "lodash";
 import SidebarContainer from '../sidebar/sidebar_container';
 
-var map;
+var google = window.google;
 
 class Map extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      markers: {},
+      currentLocation: null,
+      gmapsLoaded: false,
+    };
     this.styles = {
       default: null,
       silver: [
@@ -305,7 +309,14 @@ class Map extends React.Component {
     };
   }
 
+  initMap = () => {
+    this.setState({
+      gmapsLoaded: true,
+    })
+  }
+
   componentDidMount() {
+    window.initMap = this.initMap
     const latitude = parseFloat(37.7749); // A/a Location
     const longitude = parseFloat(-122.4194);
     
@@ -317,12 +328,7 @@ class Map extends React.Component {
 
     setTimeout( () => {
       this.map = new google.maps.Map(this.mapNode, mapOptions);
-    }, 2000);
-
-    this.state = {
-      markers: {},
-      currentLocation: null,
-    };
+    }, 3000);
     // this.addLocationToMap = this.addLocationToMap.bind(this);
   }
 

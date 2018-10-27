@@ -447,15 +447,15 @@ auth-holder
 }
 
 .hotel-icon {
-    height: 130px;
-    width: 130px;
+  height: 60px;
+  width: 60px;
   position: absolute;
-  right: 50px;
-  margin-top: -30px;
+  right: 35px;
+  margin-top: -35px;
 }
 
 .hotel-name {
-  font-size: 31px;
+  font-size: 26px;
   font-weight: 600;
   font-family: serif;
 }
@@ -484,24 +484,23 @@ auth-holder
 }
 
 .hotels-inside-container {
-  padding-left: 45px;
-  padding-bottom: 16px;
-  padding-top: 25px;
+  padding-left: 32px;
+  padding-top: 20px;
 }
 
 .hotel-price {
-  font-size: 28px;
+font-size: 22px;
   font-weight: 500;
   font-family: serif;
-  padding-left: 43px;
+  padding-left: 20px;
   position: absolute;
-  padding-top: 18px;
+  padding-top: 6px;
 }
 
 .hotels-inside-container-2 {
   height: 250px;
-  padding: 50px;
-  padding-right: 160px;
+  padding: 34px;
+  padding-right: 154px;
   letter-spacing: 1px;
 }
 
@@ -515,7 +514,7 @@ auth-holder
 }
 
 .optional-wifi {
-  padding-left: 45px;
+  padding-left: 14px;
 }
 
 .open-button {
@@ -632,4 +631,28 @@ hotels {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+.container-3{
+  width: 307px;
+}
+
+/* Location Search Input */
+
+.location-search-input {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border: honeydew;
+  display: block;
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 2px;
+  outline: none;
+}
+
+.autocomplete-dropdown-container {
+}
+
+.location-input-container {
+  width: 75%;
+  padding-left: 65px;
+  padding-right: 63px;
 }
