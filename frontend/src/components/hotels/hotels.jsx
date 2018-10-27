@@ -1,18 +1,24 @@
 import React from 'react';
 import axios from 'axios';
+import StarRatingComponent from 'react-star-rating-component';
 
 class Hotels extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       data: [],
+      lat: '37.7749',
+      lng: '-122.4194',
+      checkIn: '2018-11-01',
+      checkOut: '2018-11-03'
     }
   }
 
-  testMe = () => {
+  // change interpolations to this.props
+  getHotels = () => {
     axios
       .get(
-        `http://api.sandbox.amadeus.com/v1.2/hotels/search-circle?latitude=43.6&longitude=7.2&radius=50&check_in=2018-11-01&check_out=2018-11-03&number_of_results=50&apikey=AvrAMRvVBrXJA89mKwfYTtRWkufuwAZI`
+        `http://api.sandbox.amadeus.com/v1.2/hotels/search-circle?latitude=${this.state.lat}&longitude=${this.state.lng}&radius=50&check_in=${this.state.checkIn}&check_out=${this.state.checkOut}&number_of_results=50&apikey=AvrAMRvVBrXJA89mKwfYTtRWkufuwAZI`
       )
       .then((response) => {
         this.setState({ data: response.data.results });
@@ -23,77 +29,98 @@ class Hotels extends React.Component {
   // could also use setState if youre trying to update component
   // promise.resolve to send data out of the asynchronous call
 
-  createStars = stars => { }
+  createStars = (el) => {
+    let stars; 
+    stars = (el.awards[0] === undefined) ? (
+      (stars = 0)
+    ) : (
+        (stars = el.awards[0].rating)
+      )
+      return stars;
+  }
+
+  checkBreakfast = (el) => {
+    let test;
+    el.rooms.forEach( obj => {
+      // console.log(obj.descriptions);
+      obj.descriptions.forEach( desc => {
+        // console.log(desc);
+        if (desc.toLowerCase().includes("breakfast")) {
+            test = (<div>
+              "there is breakfast"
+            </div>)
+          ;
+        } else {
+          test =
+          <div>
+            "NO breakfast"
+          </div>
+        }
+      })
+    })
+    console.log(test)
+    return test;
+  }
 
   render() {
-    let starClass;
-    let stars = Math.round(this.state.rating);
-
-    starClass = this.state.rating > 1 ? "real-stars" : "no-stars"
+    let stars;
 
     return <div>
-      test meeee again
         <div className="hotels">
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQzt2BjKglqfdpP4fb1d5beRvYK0A45ac&libraries=places"></script>
-        <form onSubmit={this.testMe}>
-          <input type="submit" value="Submit" />
-        </form>
-        <div className="hotels-container">
-          {this.state.data.map((el) => (
-            <div className="individual-selection">
-              <div className="hotel-stats-container">
-                <div className="hotel-name-price-container">
-                  <span className="hotel-name">
-                    {el.property_name}
-                  </span>
-                  <span className="hotel-price">
-                    {el.total_price.amount} USD
+          <form onSubmit={this.getHotels}>
+            <input type="submit" value="Submit" />
+          </form>
+          <div className="hotels-container">
+            {this.state.data.map(el => (
+              <div className="individual-selection">
+                <div className="hotel-stats-container">
+                  <div className="hotel-name-price-container">
+                    <span className="hotel-name">{el.property_name}</span>
+                    <span className="hotel-price">
+                      {el.total_price.amount} USD - Total
                     </span>
+                  </div>
+                  <div className="hotel-rating" />
+                  <div className="hotel-address">
+                    {el.address.line1} <br />
+                    {el.address.city}
+                    ,&nbsp;
+                    {el.address.postal_code}
+                    &nbsp;
+                    {el.address.country}
+                  </div>
+                  <div className="marketing-text">
+                    {el.marketing_text}
+                    <br />
+                    {el.amenities.map(ele => {
+                      if (ele.amenity.toLowerCase().includes("internet")) {
+                        return <div>render internet icons here</div>;
+                      }
+                    })}
+                  </div>
+                  <div className="image-container">
+                    {(stars = this.createStars(el))}
+                  <div>{ this.checkBreakfast(el) }</div>
+                  </div>
+                  <div className="testing">
+                    <StarRatingComponent
+                      name="rate1"
+                      starCount={5}
+                      value={stars}
+                    />
+                  </div>
                 </div>
-                <div className="hotel-rating">
-
-                </div>
-                <div className="hotel-address">
-                  {el.address.line1} <br />
-                  {el.address.city},&nbsp;
-                  {el.address.postal_code}&nbsp;
-                  {el.address.country}
-                </div>
-                <div className="marketing-text">
-                  {el.marketing_text}
-                  <br />
-                  {el.amenities.map(ele => {
-                    if (ele.amenity.toLowerCase().includes("internet")) {
-                      return (<div>render something</div>)
-                    }
-                  })}
-                </div>
-                <div className="image-container">
-                  {
-                    (el.awards[0] === undefined) ? (
-                      (stars = 0) || null
-                    ) : (
-                        (stars = el.awards[0].rating) && null
-                      )
-                  }
-
-
-
-                </div>
-
-                <div className="testing">{stars}</div>
-
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </div>
+      </div>;
   }
 }
 
 
 export default Hotels;
+{/* { this.checkBreakfast(el) } */}
 
 
 // componentDidMount(){

@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import Hotels from './hotels';
 
-// const mapStateToProps = (statem ownProps) => {
+// const mapStateToProps = (state, ownProps) => {
 //   return ({
 //     lat:
 //       lng:
-//     check_in:
-//       check_out:
+//     checkIn:
+//       checkOut:
 //   })
 // }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Hotels);
+// export default connect(mapStateToProps, null)(Hotels);
