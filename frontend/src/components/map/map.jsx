@@ -2,8 +2,6 @@ import React from "react";
 import { merge } from "lodash";
 import SidebarContainer from '../sidebar/sidebar_container';
 
-var google = window.google;
-
 class Map extends React.Component {
   constructor(props) {
     super(props);
@@ -309,30 +307,6 @@ class Map extends React.Component {
     };
   }
 
-  initMap = () => {
-    this.setState({
-      gmapsLoaded: true,
-    })
-  }
-
-  componentDidMount() {
-    window.initMap = this.initMap
-    const latitude = parseFloat(37.7749); // A/a Location
-    const longitude = parseFloat(-122.4194);
-    
-    const mapOptions = {
-      center: { lat: latitude, lng: longitude }, // this is SF
-      zoom: 13,
-      mapTypeControl: false
-    };
-
-    setTimeout( () => {
-      this.map = new google.maps.Map(this.mapNode, mapOptions);
-    }, 3000);
-    // this.addLocationToMap = this.addLocationToMap.bind(this);
-  }
-
-
 
   // createNewMarker(lat, lng, map, marker, id) {
   //   const categoryMarkers = {
@@ -389,8 +363,12 @@ class Map extends React.Component {
   //   });
   // }
 
+  componentDidMount() {
+    window.initMap();
+  }
+
   updateStyle(e) {
-    this.map.setOptions({ styles: this.styles[e.currentTarget.value] });
+    window.map.setOptions({ styles: this.styles[e.currentTarget.value] });
   }
 
 
@@ -405,7 +383,7 @@ class Map extends React.Component {
           <option value="retro" selected="selected">Retro</option>
           <option value="hiding">Hide features</option>
         </select>
-        <div className="google-map" ref={map => (this.mapNode = map)} />
+        <div id="google-map" className="google-map" />
       </div>
     );
   }

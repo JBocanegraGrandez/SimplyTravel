@@ -5,8 +5,23 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-psncbiRuWJZKw-S969VXPabwjuKvXCA&callback=initMap"></script>
-    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-psncbiRuWJZKw-S969VXPabwjuKvXCA&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-psncbiRuWJZKw-S969VXPabwjuKvXCA&callback=initMap"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-psncbiRuWJZKw-S969VXPabwjuKvXCA&libraries=places&callback=myCallbackFunc"></script>
+
+    <script>
+      window.initMap = () => {
+        const latitude = parseFloat(37.7749); // A/a Location
+        const longitude = parseFloat(-122.4194);
+
+        const mapOptions = {
+          center: { lat: latitude, lng: longitude }, // this is SF
+          zoom: 13,
+          mapTypeControl: false
+        };
+
+        window.map = new window.google.maps.Map(document.getElementById("google-map"), mapOptions);
+      }
+    </script>
 
 
     <!--
