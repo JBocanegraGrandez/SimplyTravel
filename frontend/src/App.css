@@ -594,5 +594,42 @@ hotels {
 }
 
 .hotel-amenities {
+}
 
+/* INDEX BACKGROUND */
+
+.modal-background {
+   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+   /* url("https://s3-us-west-1.amazonaws.com/bagquest-pro/profile/bg.JPG") repeat; */
+   url("./resources/collage.jpg") repeat;
+   position: fixed;
+   top: 0;
+   margin-top: 50px;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   height: 180vh;
+ 
+   z-index: -1;
+   animation: 6s bg alternate infinite;
+
+}
+
+@keyframes bg {
+  0% {
+    transform: translate3d(0,0,0);
+  }
+  100% {
+    transform: translate3d(0,-200px,0);
+  }
+}
+
+.modal-child {
+  position: fixed;
+  width: 375px;
+  height: 400px;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }

@@ -14,6 +14,7 @@ import LogInFormContainer from "./session_form/login_form_container.jsx";
 import Hotels from "./hotels/hotels.jsx";
 import FlightPriceContainer from "./flight_price/flight_price_container";
 import MapContainer from './map/map_container';
+import index from './home/index';
 
 
 
@@ -25,6 +26,7 @@ const Root = () => (
             </Link>
         </header>
         <Switch>
+            <Route exact path="/" component={index} />
             <Route exact path="/flightprice" component={FlightPriceContainer} />
             <AuthRoute exact path="/login" component={LogInFormContainer} />
             <AuthRoute exact path="/signup" component={SignUpFormContainer} />

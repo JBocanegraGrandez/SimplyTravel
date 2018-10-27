@@ -62,7 +62,6 @@ class SignUpForm extends React.Component {
 
     render() {
       const random = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11][Math.floor(Math.random() * 11)];
-      console.log(random)
       return <div className="background-container" style={{ backgroundImage: `url(${random})` }}>
         <div className="sign-up-container">
             <div className="auth-main">
