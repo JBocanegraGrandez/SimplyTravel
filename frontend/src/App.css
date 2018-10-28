@@ -253,12 +253,13 @@ table {
 .flight-info-main-container {
   display: flex;
   justify-content: center;
-  background-color: rgba(238, 238, 238, 0.863);
   height: 20px;
   padding: 15px 10px;
   margin: 18px;
   border: 1px solid #E6E6E6;
-  box-shadow: 1px 0px 3px 1px #bcbcbc;
+  background-color: rgba(243, 243, 243, 0.89);
+  border-radius: 15px;
+  box-shadow: 0 1px 1px lightgrey
 }
 
 .initial-flight-display-container {
@@ -271,15 +272,27 @@ table {
 }
 
 .initial-flight-info {
-  /* padding-right: 20px; */
+  padding-right: 15px;
 }
+
+.flight-info-and-booking-container{
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 275px;
+  width: 587px;
+  left: 37px;
+  border: 1px solid #E6E6E6;
+  background-color: rgba(243, 243, 243, 0.89);
+  border-radius: 15px;
+  box-shadow: 0 1px 1px lightgrey}
 
 .flight-items-container {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  border: 1px solid black;
-  margin: 20px;
+  border: 1px solid #E6E6E6;
+  margin: 2px;
+  border-radius: 15px;
 }
 
 .flight-items {
@@ -289,6 +302,13 @@ table {
   font-family: Arial, sans-serif;
 }
 
+.flight-booking:hover input {
+  background: #bcbcbc;
+}
+
+.flight-booking-submit {
+  
+}
 
 .sign-up-container {
   /* background-color: red; */
