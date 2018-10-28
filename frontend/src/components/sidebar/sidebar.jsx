@@ -38,8 +38,9 @@ class Sidebar extends React.Component {
                 Where do you want to go?
               </span>
             </div>
-            <div className="flights-container" />
+            <div className="flights-container" >
               <FlightPriceContainer />
+            </div>
             <div className="hotels-container">
               <div className="hotels-inside-container">
                 <img

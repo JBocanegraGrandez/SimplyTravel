@@ -238,11 +238,42 @@ table {
 
 /* Flight */
 
+.flights-container {
+  display: flex;
+  background-color: #fff;
+  height: 425px;
+  flex-direction: column;
+  padding-top: 30px;
+  margin: 18px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
+}
+
 .flight-info-main-container {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(238, 238, 238, 0.863);
+  height: 20px;
+  padding: 15px 10px;
+  margin: 18px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
+}
+
+.initial-flight-display-container {
   display: flex;
 }
 
-.flight-info-container {
+.initial-flight-display {
+  display: flex;
+  align-items: center;
+}
+
+.initial-flight-info {
+  /* padding-right: 20px; */
+}
+
+.flight-items-container {
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -250,12 +281,13 @@ table {
   margin: 20px;
 }
 
-.flight-info {
+.flight-items {
   line-height: 1.5em;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.87);
   font-family: Arial, sans-serif;
 }
+
 
 .sign-up-container {
   /* background-color: red; */
@@ -404,19 +436,6 @@ auth-holder
   border: 1px solid #E6E6E6;
   box-shadow: 1px 0px 3px 1px #bcbcbc;
 }
-
-
-.flights-container {
-  background-color: #fff;
-  height: 425px;
-  display: flex;
-  flex-direction: column;
-  padding-top: 30px;
-  margin: 18px;
-  border: 1px solid #E6E6E6;
-  box-shadow: 1px 0px 3px 1px #bcbcbc;
-}
-
 
 .hotels-container {
   background-color: #fff;

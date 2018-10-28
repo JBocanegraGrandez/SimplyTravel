@@ -16,27 +16,28 @@ class FlightPrice extends React.Component {
     this.flightPriceRequest = this.flightPriceRequest.bind(this);
     this.renderDropDown = this.renderDropDown.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
+    // this.props.pinFlightPrice({flight: 699})
   }
   
   componentWillMount() {
   // this.nearestAirport({this.props.location.lng}, {this.props.location.lat}, {this.props.destination.lng}, {this.props.destination.lat}); // Appacademy -> france
-  // this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
+  this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props
-      .pinFlightPrice({flight: this.state.flight, destinationAirport: this.state.destinationAirport})
-      .then(() => this.props.history.push("/"));
+      .pinFlightPrice({flight: this.state.flight})
   }
 
   nearestAirport(nearlong, nearlat, destlong, destlat) {
     axios
       .get(
-        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&latitude=${nearlat}&longitude=${nearlong}`
+        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=b5AUHYrHUoQG5pRPGCIWg9gFGH2cpulE&latitude=${nearlat}&longitude=${nearlong}`
         )
       .then(response => {
         this.setState({ nearestAirport: response.data });
@@ -47,7 +48,7 @@ class FlightPrice extends React.Component {
 
     axios
       .get(
-        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&latitude=${destlat}&longitude=${destlong}`
+        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=b5AUHYrHUoQG5pRPGCIWg9gFGH2cpulE&latitude=${destlat}&longitude=${destlong}`
       )
       .then(response => {
         this.setState({ destinationAirport: response.data });
@@ -69,7 +70,7 @@ class FlightPrice extends React.Component {
     console.log(day)
     axios
       .get(
-      `https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=RUMhsHJvwFBRMMzCJ1w5mRYvWizwbeYm&origin=${locAirport}&destination=${destAirport}&departure_date=${year}-${month}-${day}&number_of_results=1`
+      `https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=b5AUHYrHUoQG5pRPGCIWg9gFGH2cpulE&origin=${locAirport}&destination=${destAirport}&departure_date=${year}-${month}-${day}&number_of_results=1`
       )
       .then(response => {
         this.setState({ flight: response.data });
@@ -101,20 +102,22 @@ class FlightPrice extends React.Component {
     let outbound = this.state.flight.results[0].itineraries[0].outbound;
     let lastFlight = outbound.flights[outbound.flights.length - 1];
     return (
-      <div>
+      <div className='initial-flight-display-container'>
         <div className="initial-flight-display" onClick={this.toggleDropdown}>
           <img className="flight-icon" src="" />
-          <div>
+          <div className="initial-flight-info">
             Flight Price: {this.state.flight.results[0].fare.total_price}
           </div>
-          <div>Duration: {outbound.duration}</div>
-          <div>
+          <div className="initial-flight-info">
+            Duration: {outbound.duration}
+          </div>
+          <div className="initial-flight-info">
             Path:
             {outbound.flights[0].origin.airport}
-            to {lastFlight.destination.airport}
+            -{lastFlight.destination.airport}
           </div>
-          <div>Stops: {outbound.flights.length - 1}</div>
-          <div>One Way</div>
+          <div className="initial-flight-info">Stops: {outbound.flights.length - 1}</div>
+          <div className="initial-flight-info">One Way</div>
         </div>
         {this.renderDropDown(combinedFlights)}
         <form className="flight-booking" onSubmit={this.handleSubmit}>
@@ -128,20 +131,20 @@ class FlightPrice extends React.Component {
     return (
       <div className="initial-flight-display">
         <img className="flight-icon" src="" />
-        <div>Flight Price: -</div>
-        <div>Duration: -</div>
-        <div>Path: -</div>
-        <div>Stops: -</div>
-        <div>One Way</div>
+        <div className="initial-flight-info">Flight Price: -</div>
+        <div className="initial-flight-info">Duration: -</div>
+        <div className="initial-flight-info">Path: -</div>
+        <div className="initial-flight-info">Stops: -</div>
+        <div className="initial-flight-info">One Way</div>
       </div>
     );
   }
 
   render() {
     let combinedFlights;
-    // if (this.state.nearestAirport !== null && this.state.destinationAirport !== null) {
-    //   this.flightPriceRequest(this.state.nearestAirport[0].airport, this.state.destinationAirport[0].airport);
-    // }
+    if (this.state.nearestAirport !== null && this.state.destinationAirport !== null) {
+      this.flightPriceRequest(this.state.nearestAirport[0].airport, this.state.destinationAirport[0].airport);
+    }
 
     if (this.state.flight) {
       combinedFlights = this.state.flight.results[0].itineraries[0].outbound.flights.map(
