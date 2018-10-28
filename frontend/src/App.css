@@ -242,9 +242,8 @@ table {
 .flights-container {
   display: flex;
   background-color: #fff;
-  height: 425px;
+  /* height: 425px; */
   flex-direction: column;
-  padding-top: 30px;
   margin: 18px;
   border: 1px solid #E6E6E6;
   box-shadow: 1px 0px 3px 1px #bcbcbc;
@@ -255,11 +254,12 @@ table {
   justify-content: center;
   height: 20px;
   padding: 15px 10px;
-  margin: 18px;
+  margin: 15px;
   border: 1px solid #E6E6E6;
   background-color: rgba(243, 243, 243, 0.89);
   border-radius: 15px;
-  box-shadow: 0 1px 1px lightgrey
+  box-shadow: 0 1px 1px lightgrey;
+  font-size: 14px;
 }
 
 .initial-flight-display-container {
@@ -271,19 +271,27 @@ table {
   align-items: center;
 }
 
+.initial-flight-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 10px;
+}
+
 .initial-flight-info {
-  padding-right: 15px;
+  font-size: 15px;
 }
 
 .flight-info-and-booking-container{
   display: flex;
   position: absolute;
+  z-index: 2;
   flex-direction: column;
-  top: 275px;
-  width: 587px;
+  top: 200px;
+  width: 320px;
   left: 37px;
   border: 1px solid #E6E6E6;
-  background-color: rgba(243, 243, 243, 0.89);
+  background-color: rgba(243, 243, 243, 10.89);
   border-radius: 15px;
   box-shadow: 0 1px 1px lightgrey}
 
@@ -306,8 +314,12 @@ table {
   background: #bcbcbc;
 }
 
+.airline-logos {
+  max-width: 405px;
+  max-height: 103px;
+}
+
 .flight-booking-submit {
-  
 }
 
 .sign-up-container {

@@ -70,6 +70,10 @@ class Sidebar extends React.Component {
                 <a href="#">Take me somewhere</a>
               </div>
             </div>
+            <div>
+              <img className="airline-logos"
+              src="http://flyingfood.com/wp-content/uploads/2014/01/airline-Catering-Customers-Slide5-1170x300.jpg" alt=""/>
+            </div>
           </div>
         </div>
       </div>;
