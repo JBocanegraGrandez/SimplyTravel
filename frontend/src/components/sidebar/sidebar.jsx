@@ -1,6 +1,7 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
 import LocationSearchInput from "../location_search_bar/location_search_input";
+import FlightPriceContainer from "../flight_price/flight_price_container";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -35,10 +36,10 @@ class Sidebar extends React.Component {
             <div className="location-container">
               <span className="sidebar-panel" onClick={this.openNav}>
                 Where do you want to go?
-            </span>
+              </span>
             </div>
             <div className="flights-container" />
-
+              <FlightPriceContainer />
             <div className="hotels-container">
               <div className="hotels-inside-container">
                 <img
@@ -51,11 +52,11 @@ class Sidebar extends React.Component {
               <div className="hotels-inside-container-2">
                 <span className="hotel-location">
                   950 Mason St, San Francisco, CA 94108, United States
-              </span>
+                </span>
                 <div className="container-3">
                   <span className="hotel-rating">
                     4 Stars
-                  <img
+                    <img
                       src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Star_rating_4_of_5.png"
                       className="rating-img"
                     />
@@ -63,7 +64,7 @@ class Sidebar extends React.Component {
                   <span className="optional-breakfast">
                     {" "}
                     Breakfast
-                  <img
+                    <img
                       src="https://cdn1.iconfinder.com/data/icons/rcons-drink/16/tea-512.png"
                       className="drink-icon"
                     />
@@ -71,7 +72,7 @@ class Sidebar extends React.Component {
                   <span className="optional-wifi">
                     {" "}
                     Free Wifi
-                  <img
+                    <img
                       src="https://images.vexels.com/media/users/3/141424/isolated/preview/e0bb2e1b2183a2d1e675f215ce236e21-wifi-icon-by-vexels.png"
                       className="wifi-icon"
                     />
