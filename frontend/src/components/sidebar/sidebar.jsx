@@ -18,37 +18,25 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    return (
-      <div className="places-autocomplete">
+    return <div className="places-autocomplete">
         <div className="open-button-container">
-          <img
-            src="https://www.atipso.com/wp-content/uploads/2014/09/icon_send.png"
-            className="open-button"
-            onClick={this.openNav}
-          />
+          <img src="https://www.atipso.com/wp-content/uploads/2014/09/icon_send.png" className="open-button" onClick={this.openNav} />
           <div id="mySidenav" className="sidenav">
+            <div className="location-container">
+              <span className="sidebar-panel" onClick={this.openNav}>
+                Your destination is one click away!
+              </span>
+            </div>
+            <img src="https://cdn1.iconfinder.com/data/icons/arrows-ii/24/Material_icons-02-55-512.png" className="closebtn" onClick={this.closeNav} />
             <div className="location-search-container">
               <LocationSearchInput />
             </div>
-            <img
-              src="http://cdn.onlinewebfonts.com/svg/img_403289.png"
-              className="closebtn"
-              onClick={this.closeNav}
-            />
-            <div className="location-container">
-              <span className="sidebar-panel" onClick={this.openNav}>
-                Where do you want to go?
-              </span>
-            </div>
-            <div className="flights-container" >
+            <div className="flights-container">
               <FlightPriceContainer />
             </div>
             <div className="hotels-container">
               <div className="hotels-inside-container">
-                <img
-                  src="https://www.bingleywalkersarewelcome.org.uk/wp-content/uploads/2015/06/icon-hotel.png"
-                  className="hotel-icon"
-                />
+                <img src="https://www.bingleywalkersarewelcome.org.uk/wp-content/uploads/2015/06/icon-hotel.png" className="hotel-icon" />
                 <span className="hotel-name">Fairmont Hotel</span>
                 <span className="hotel-price">$138</span>
               </div>
@@ -59,26 +47,17 @@ class Sidebar extends React.Component {
                 <div className="container-3">
                   <span className="hotel-rating">
                     4 Stars
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Star_rating_4_of_5.png"
-                      className="rating-img"
-                    />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Star_rating_4_of_5.png" className="rating-img" />
                   </span>
                   <span className="optional-breakfast">
                     {" "}
                     Breakfast
-                    <img
-                      src="https://cdn1.iconfinder.com/data/icons/rcons-drink/16/tea-512.png"
-                      className="drink-icon"
-                    />
+                    <img src="https://cdn1.iconfinder.com/data/icons/rcons-drink/16/tea-512.png" className="drink-icon" />
                   </span>
                   <span className="optional-wifi">
                     {" "}
                     Free Wifi
-                    <img
-                      src="https://images.vexels.com/media/users/3/141424/isolated/preview/e0bb2e1b2183a2d1e675f215ce236e21-wifi-icon-by-vexels.png"
-                      className="wifi-icon"
-                    />
+                    <img src="https://images.vexels.com/media/users/3/141424/isolated/preview/e0bb2e1b2183a2d1e675f215ce236e21-wifi-icon-by-vexels.png" className="wifi-icon" />
                   </span>
                 </div>
               </div>
@@ -93,8 +72,7 @@ class Sidebar extends React.Component {
             </div>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 
