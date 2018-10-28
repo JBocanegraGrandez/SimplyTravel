@@ -21,11 +21,11 @@ class FlightPrice extends React.Component {
 
   componentDidMount() {
     // this.props.pinFlightPrice({flight: 699})
+    // this.nearestAirport({this.props.location.lng}, {this.props.location.lat}, {this.props.destination.lng}, {this.props.destination.lat}); // Appacademy -> france
+    // this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
   }
   
   componentWillMount() {
-  // this.nearestAirport({this.props.location.lng}, {this.props.location.lat}, {this.props.destination.lng}, {this.props.destination.lat}); // Appacademy -> france
-  this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
   }
 
   handleSubmit(e) {
@@ -90,7 +90,14 @@ class FlightPrice extends React.Component {
 
   renderDropDown(input) {
     let dropdownVisible = this.state.dropdownVisible;
-    return !dropdownVisible ? null : input;
+    return !dropdownVisible ? null : 
+    <div className="flight-info-and-booking-container">
+      {input}
+      <form className="flight-booking" onSubmit={this.handleSubmit}>
+        <input type="submit" value="Book Now!" />
+      </form>
+    </div>
+
   }
 
   toggleDropdown() {
@@ -120,9 +127,6 @@ class FlightPrice extends React.Component {
           <div className="initial-flight-info">One Way</div>
         </div>
         {this.renderDropDown(combinedFlights)}
-        <form className="flight-booking" onSubmit={this.handleSubmit}>
-          <input type="submit" value="Book Now!" />
-        </form>
       </div>
     );
   }
@@ -142,7 +146,12 @@ class FlightPrice extends React.Component {
 
   render() {
     let combinedFlights;
-    if (this.state.nearestAirport !== null && this.state.destinationAirport !== null) {
+    if (this.state.nearestAirport === null && this.state.destinationAirport === null &&
+      this.state.flight === null) {
+      this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
+    }
+    if (this.state.nearestAirport !== null && this.state.destinationAirport !== null && 
+      this.state.flight === null) {
       this.flightPriceRequest(this.state.nearestAirport[0].airport, this.state.destinationAirport[0].airport);
     }
 
