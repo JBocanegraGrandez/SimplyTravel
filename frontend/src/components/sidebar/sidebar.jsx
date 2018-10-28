@@ -9,7 +9,7 @@ class Sidebar extends React.Component {
   }
 
   openNav() {
-    document.getElementById("mySidenav").style.width = "408px"; //.style.width = "250px"
+    document.getElementById("mySidenav").style.width = "30%"; //.style.width = "250px"
   }
 
   closeNav() {
@@ -26,7 +26,9 @@ class Sidebar extends React.Component {
             onClick={this.openNav}
           />
           <div id="mySidenav" className="sidenav">
-            <LocationSearchInput />
+            <div className="location-search-container">
+              <LocationSearchInput />
+            </div>
             <img
               src="http://cdn.onlinewebfonts.com/svg/img_403289.png"
               className="closebtn"
