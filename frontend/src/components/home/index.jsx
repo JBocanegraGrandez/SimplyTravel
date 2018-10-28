@@ -6,6 +6,9 @@ export default function index() {
     <div>
       <div className="modal-background"></div>
       <div className="home-search-bar-container">
+        <div className="home-container">
+          <h1>SimplyTravel</h1>
+        </div>
         <LocationSearchInput />
       </div>
     </div>

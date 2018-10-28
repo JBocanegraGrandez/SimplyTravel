@@ -648,9 +648,17 @@ hotels {
 }
 
 .autocomplete-dropdown-container {
+  
 }
 
 .location-input-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  height: 90%;
+}
+
+.location-search-container {
   width: 75%;
   padding-left: 65px;
   padding-right: 63px;
@@ -661,4 +669,29 @@ hotels {
 .home-search-bar-container {
   margin: 0 auto;
   width: 50%;
+  height: 100vh;
+  text-align: center;
+}
+
+.home-title {
+  color: white;
+  
+}
+
+.home-container {
+  font-size: 90px;
+  color: white;
+  font-family: cursive;
+  position: fixed;
+  height: 49%;
+}
+
+h1 {
+  left: 190px;
+  line-height: 200px;
+  margin: auto;
+  margin-top: -100px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
 }
