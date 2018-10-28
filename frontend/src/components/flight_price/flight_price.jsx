@@ -94,7 +94,7 @@ class FlightPrice extends React.Component {
     <div className="flight-info-and-booking-container">
       {input}
       <form className="flight-booking" onSubmit={this.handleSubmit}>
-        <input type="submit" value="Book Now!" />
+        <input className="flight-booking-submit" type="submit" value="Book Now!" />
       </form>
     </div>
 
@@ -112,19 +112,46 @@ class FlightPrice extends React.Component {
       <div className='initial-flight-display-container'>
         <div className="initial-flight-display" onClick={this.toggleDropdown}>
           <img className="flight-icon" src="" />
-          <div className="initial-flight-info">
-            Flight Price: {this.state.flight.results[0].fare.total_price}
+          <div className="initial-flight-info-container">
+            <div className="initial-flight-info">
+              Price:
+            </div>
+            <div className="initial-flight-info">
+              {this.state.flight.results[0].fare.total_price}
+            </div>
           </div>
-          <div className="initial-flight-info">
-            Duration: {outbound.duration}
+          <div className="initial-flight-info-container">
+            <div className="initial-flight-info">
+              Duration: 
+            </div>
+            <div className="initial-flight-info">
+              {outbound.duration}
+            </div>
           </div>
-          <div className="initial-flight-info">
-            Path:
-            {outbound.flights[0].origin.airport}
-            -{lastFlight.destination.airport}
+          <div className="initial-flight-info-container">
+            <div className="initial-flight-info">
+              Path:
+            </div>
+            <div className="initial-flight-info">
+              {outbound.flights[0].origin.airport} - {lastFlight.destination.airport}
+            </div>
           </div>
-          <div className="initial-flight-info">Stops: {outbound.flights.length - 1}</div>
-          <div className="initial-flight-info">One Way</div>
+          <div className="initial-flight-info-container">
+            <div className="initial-flight-info">
+              Stops: 
+            </div>
+            <div className="initial-flight-info">
+              {outbound.flights.length - 1
+            }</div>
+          </div>
+          <div className="initial-flight-info-container">
+            <div className="initial-flight-info">
+              One
+            </div>
+            <div className="initial-flight-info">
+              Way
+            </div>
+          </div>
         </div>
         {this.renderDropDown(combinedFlights)}
       </div>
@@ -135,11 +162,46 @@ class FlightPrice extends React.Component {
     return (
       <div className="initial-flight-display">
         <img className="flight-icon" src="" />
-        <div className="initial-flight-info">Flight Price: -</div>
-        <div className="initial-flight-info">Duration: -</div>
-        <div className="initial-flight-info">Path: -</div>
-        <div className="initial-flight-info">Stops: -</div>
-        <div className="initial-flight-info">One Way</div>
+        <div className="initial-flight-info-container">
+          <div className="initial-flight-info">
+            Price:
+          </div>
+          <div className="initial-flight-info">
+            -
+          </div>
+        </div>
+        <div className="initial-flight-info-container">
+          <div className="initial-flight-info">
+            Duration:
+          </div>
+          <div className="initial-flight-info">
+            -
+          </div>
+        </div>
+        <div className="initial-flight-info-container">
+          <div className="initial-flight-info">
+            Path:
+          </div>
+          <div className="initial-flight-info">
+            -
+          </div>
+        </div>
+        <div className="initial-flight-info-container">
+          <div className="initial-flight-info">
+            Stops:
+          </div>
+          <div className="initial-flight-info">
+            -
+          </div>
+        </div>
+        <div className="initial-flight-info-container">
+          <div className="initial-flight-info">
+            One 
+          </div>
+          <div className="initial-flight-info">
+            Way
+          </div>
+        </div>
       </div>
     );
   }
