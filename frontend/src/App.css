@@ -655,7 +655,7 @@ hotels {
   display: flex;
   align-items: center;
   align-content: center;
-  height: 90%;
+  width: 50%;
 }
 
 .location-search-container {
@@ -666,32 +666,42 @@ hotels {
 
 /* Home Seach Bar  */
 
-.home-search-bar-container {
+/* .home-search-bar-container {
   margin: 0 auto;
   width: 50%;
   height: 100vh;
   text-align: center;
-}
+} */
 
 .home-title {
   color: white;
-  
 }
 
-.home-container {
-  font-size: 90px;
-  color: white;
-  font-family: cursive;
+/* .home-container {
+  font-size: 105px;
+  color: #ffffff;
+  font-family: 'Dancing Script', cursive;
   position: fixed;
   height: 49%;
-}
+} */
 
 h1 {
-  left: 190px;
+  left: 220px;
   line-height: 200px;
-  margin: auto;
-  margin-top: -100px;
-  position: absolute;
-  top: 50%;
-  width: 100%;
+  width: auto;
+  margin: 0;
+  position: static;
+  top: 60%;
+  font-size: 205px;
+  color: #ffffff;
+  font-family: 'Dancing Script', cursive;
+  padding-bottom: 60px;
+}
+
+.home-page {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  display: flex;
 }

@@ -3,14 +3,10 @@ import LocationSearchInput from '../location_search_bar/location_search_input';
 
 export default function index() {
   return (
-    <div>
+    <div className="home-page">
       <div className="modal-background"></div>
-      <div className="home-search-bar-container">
-        <div className="home-container">
-          <h1>SimplyTravel</h1>
-        </div>
+        <h1>SimplyTravel</h1>
         <LocationSearchInput />
-      </div>
     </div>
   )
 }
