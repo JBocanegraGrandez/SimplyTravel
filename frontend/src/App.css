@@ -407,11 +407,10 @@ auth-holder
 .sidenav .closebtn {
   position: absolute;
   font-size: 36px;
-  margin-left: 50px;
-  width: 35px;
-  height: 35px;
-  top: 15px;
-  right: 15px;
+  width: 20px;
+  height: 20px;
+  top: 6px;
+  right: 3px;
 }
 
 @media screen and (max-height: 450px) {
@@ -420,7 +419,7 @@ auth-holder
 }
 
 .location-container {
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'Permanent Marker', cursive;
   height: 25px;
   padding-left: 70px;
@@ -720,9 +719,9 @@ h1 {
 }
 
 .home-icon {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   position: relative;
-  top: 10px;
-  left: 226px;
+  top: 12px;
+  left: 219px;
 }

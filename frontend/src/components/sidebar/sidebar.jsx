@@ -27,7 +27,7 @@ class Sidebar extends React.Component {
                 Your destination is one click away!
               </span>
             </div>
-            <img src="http://cdn.onlinewebfonts.com/svg/img_403289.png" className="closebtn" onClick={this.closeNav} />
+            <img src="https://cdn1.iconfinder.com/data/icons/arrows-ii/24/Material_icons-02-55-512.png" className="closebtn" onClick={this.closeNav} />
             <div className="location-search-container">
               <LocationSearchInput />
             </div>
