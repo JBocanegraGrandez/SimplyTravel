@@ -100,7 +100,7 @@ table {
 
 .main-header-menu-wrap {
   display: flex;
-  width: 1600px;
+  width: 80%;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 14px;
@@ -120,7 +120,7 @@ table {
   justify-content: space-between;
   width: 334px;
   font-family: Helvetica;
-
+  padding-right: 30px;
 }
 
 .log-in-header-div button{
@@ -665,10 +665,16 @@ hotels {
   font-size: 16px;
   border-radius: 2px;
   outline: none;
+  position: relative;
 }
 
 .autocomplete-dropdown-container {
-  
+  position: absolute;
+  min-width: 640px;
+  z-index: 1;
+  border-radius: 2px;
+  height: 5px;
+  margin-top: 29px;
 }
 
 .location-input-container {
@@ -699,7 +705,7 @@ h1 {
   margin: 0;
   position: static;
   top: 60%;
-  font-size: 205px;
+  font-size: 188px;
   color: #ffffff;
   font-family: 'Dancing Script', cursive;
   padding-bottom: 60px;
