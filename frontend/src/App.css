@@ -315,8 +315,11 @@ table {
 }
 
 .airline-logos {
-  max-width: 405px;
-  max-height: 103px;
+  max-width: 730px;
+  max-height: 80px;
+  padding-left: 29px;
+  margin-top: 5px;
+  padding-bottom: 16px;
 }
 
 .flight-booking-submit {

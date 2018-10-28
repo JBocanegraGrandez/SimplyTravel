@@ -33,6 +33,10 @@ class Sidebar extends React.Component {
             </div>
             <div className="flights-container">
               <FlightPriceContainer />
+              <div>
+                <img className="airline-logos"
+                  src="http://flyingfood.com/wp-content/uploads/2014/01/airline-Catering-Customers-Slide5-1170x300.jpg" alt="" />
+              </div>
             </div>
             <div className="hotels-container">
               <div className="hotels-inside-container">
@@ -69,10 +73,6 @@ class Sidebar extends React.Component {
                 <a href="/signup">Sign Up</a>
                 <a href="#">Take me somewhere</a>
               </div>
-            </div>
-            <div>
-              <img className="airline-logos"
-              src="http://flyingfood.com/wp-content/uploads/2014/01/airline-Catering-Customers-Slide5-1170x300.jpg" alt=""/>
             </div>
           </div>
         </div>
