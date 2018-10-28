@@ -422,7 +422,7 @@ auth-holder
   overflow-x: hidden;
   transition: 1.2s;
   padding-top: 60px;
-  height: 100vh;
+  height: calc(100vh - 60px);
   max-width: 408px;
 }
 
