@@ -100,7 +100,7 @@ table {
 
 .main-header-menu-wrap {
   display: flex;
-  width: 1200px;
+  width: 1600px;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 14px;
@@ -716,7 +716,7 @@ h1 {
 .home-icon {
   width: 53px;
   height: 53px;
-  position: absolute;
-  left: 765px;
-  top: 6px;
+  position: relative;
+  top: 5px;
+  left: 238px;
 }
