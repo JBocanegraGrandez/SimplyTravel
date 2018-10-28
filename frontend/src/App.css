@@ -219,6 +219,7 @@ table {
 .logo-link {
   text-decoration: none;
   color: inherit;
+  font-family: 'Dancing Script', cursive;
 }
 
 /* LOG IN/SIGN UP FORM */
@@ -666,24 +667,11 @@ hotels {
 
 /* Home Seach Bar  */
 
-/* .home-search-bar-container {
-  margin: 0 auto;
-  width: 50%;
-  height: 100vh;
-  text-align: center;
-} */
+
 
 .home-title {
   color: white;
 }
-
-/* .home-container {
-  font-size: 105px;
-  color: #ffffff;
-  font-family: 'Dancing Script', cursive;
-  position: fixed;
-  height: 49%;
-} */
 
 h1 {
   left: 220px;
@@ -704,4 +692,12 @@ h1 {
   justify-content: center;
   height: 80vh;
   display: flex;
+}
+
+.home-icon {
+  width: 53px;
+  height: 53px;
+  position: absolute;
+  left: 765px;
+  top: 6px;
 }
