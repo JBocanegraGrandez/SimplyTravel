@@ -1,7 +1,8 @@
+
 import { connect } from "react-redux";
 import { pinDestination } from "../../actions/destination_actions";
 import { pinLocation } from "../../actions/location_actions";
-import LocationSearchInput from "./location_search_input";
+import DestinationSearchInput from "./destination_search_input";
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -10,4 +11,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null,mapDispatchToProps)(LocationSearchInput);
+export default connect(null,mapDispatchToProps)(DestinationSearchInput);
