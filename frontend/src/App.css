@@ -123,6 +123,12 @@ table {
   padding-right: 30px;
 }
 
+.main-page-search-bar-container{
+  display: flex;
+  flex-direction: row;
+  width: 1000px;
+}
+
 .log-in-header-div button{
   height: 37px;
   width: 65px;
