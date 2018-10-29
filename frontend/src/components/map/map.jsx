@@ -307,68 +307,81 @@ class Map extends React.Component {
     };
   }
 
-
-  // createNewMarker(lat, lng, map, marker, id) {
-  //   const categoryMarkers = {
-  //     food: {
-  //       icon: `<span class="map-icon map-icon-restaurant"></span>`,
-  //       color: "#0E77E9",
-  //     },
-  //     misc: {
-  //       icon: `<span class="map-icon map-icon-search"></span>`,
-  //       color: "#000000",
-  //     },
-  //     hospital: {
-  //       icon: `<span class="map-icon map-icon-doctor"></span>`,
-  //       color: "#F45B69",
-  //     },
-  //   };
-
-  //   // return new mapIcons.Marker({
-  //   //   position: { lat, lng },
-  //   //   map,
-  //   //   icon: {
-  //   //     path: mapIcons.shapes.MAP_PIN,
-  //   //     fillColor: categoryMarkers[marker].color,
-  //   //     fillOpacity: 1,
-  //   //     strokeColor: "",
-  //   //     strokeWeight: 0,
-  //   //     scale: 9 / 10,
-  //   //   },
-  //   //   map_icon_label: categoryMarkers[marker].icon,
-  //   // });
-  // }
-
-  // addLocationToMap(location) {
-  //   if (location === null) return;
-  //   const marker = this.createNewMarker(
-  //     location.latitude,
-  //     location.longitude,
-  //     this.map,
-  //     location.marker,
-  //     location._id
-  //   );
-
-  //   marker.addListener("click", () => this.props.open(location._id));
-  //   marker.addListener("mouseover", () => this.props.set(location._id));
-  //   marker.addListener("mouseout", () => this.props.clear());
-
-  //   this.setState(prevState => {
-  //     const currentMarkers = prevState === null ? {} : prevState.markers;
-  //     const combinedMarkers = merge({}, currentMarkers, {
-  //       [location._id]: marker,
-  //     });
-
-  //     return { markers: combinedMarkers };
-  //   });
-  // }
-
   componentDidMount() {
-    window.initMap();
+    var myLatLng = { lat: 37.7749, lng: -122.4194 }
+
+    const mapOptions = {
+      center: myLatLng, // this is SF
+      zoom: 4,
+      mapTypeControl: false
+    };
+
+    this.map = new window.google.maps.Map(document.getElementById("google-map"), mapOptions);
+    const infoWindow = new window.google.maps.InfoWindow;
+
+    // var marker = new window.google.maps.Marker({
+    //   position: myLatLng,
+    //   map: this.map,
+    //   title: 'Click to zoom'
+    // })
+
+    // marker.addListener('click', function () {
+    //   this.map.setZoom(14);
+    //   this.map.setCenter(marker.getPosition());
+    // });
+
+    const placeMarkerAndPanTo = (latLng) => {
+      var marker = new window.google.maps.Marker({
+        position: latLng,
+        map: this.map
+      });
+      this.map.panTo(latLng);
+      setTimeout(() => this.map.setZoom(10), 750);
+      // debugger;
+      let latitude = latLng.lat();
+      let longitude = latLng.lng();
+      this.props.pinDestination({lat: latitude, lng: longitude});
+      // console.log(this.props.pinDestination);
+    }
+
+    this.map.addListener("click", function(e) {
+      placeMarkerAndPanTo(e.latLng, this.map);
+    });
+
+    //
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Click anywhere on the map!');
+        infoWindow.open(this.map);
+        this.map.setCenter(pos);
+        
+        this.props.pinLocation(pos);
+      }, () => {
+        handleLocationError(true, infoWindow, this.map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, this.map.getCenter());
+    }
+
+    const handleLocationError = (browserHasGeolocation, infoWindow, pos) => {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(this.map);
+    }
   }
 
   updateStyle(e) {
-    window.map.setOptions({ styles: this.styles[e.currentTarget.value] });
+    this.map.setOptions({ styles: this.styles[e.currentTarget.value] });
   }
 
 
