@@ -372,8 +372,12 @@ class Map extends React.Component {
         map: window.map
       });
       window.map.panTo(latLng);
-      setTimeout(() => window.map.setZoom(11), 750);
+      setTimeout(() => window.map.setZoom(10), 750);
       // debugger;
+      let latitude = latLng.lat();
+      let longitude = latLng.lng();
+      this.props.pinDestination({lat: latitude, lng: longitude});
+      console.log(this.props.pinDestination);
     }
 
     window.map.addListener("click", function(e) {
