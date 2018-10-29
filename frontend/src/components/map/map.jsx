@@ -358,7 +358,7 @@ class Map extends React.Component {
         };
         
         infoWindow.setPosition(pos);
-        infoWindow.setContent('Start by clicking on the map!');
+        infoWindow.setContent('Click anywhere on the map!');
         infoWindow.open(this.map);
         this.map.setCenter(pos);
         
