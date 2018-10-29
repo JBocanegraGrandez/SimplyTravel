@@ -365,6 +365,20 @@ class Map extends React.Component {
 
   componentDidMount() {
     window.initMap();
+
+    const placeMarkerAndPanTo = (latLng) => {
+      var marker = new window.google.maps.Marker({
+        position: latLng,
+        map: window.map
+      });
+      window.map.panTo(latLng);
+      setTimeout(() => window.map.setZoom(11), 750);
+      // debugger;
+    }
+
+    window.map.addListener("click", function(e) {
+      placeMarkerAndPanTo(e.latLng, window.map);
+    });
   }
 
   updateStyle(e) {

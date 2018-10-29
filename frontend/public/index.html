@@ -13,9 +13,6 @@
       window.initMap = () => {
         var myLatLng = {lat: 37.7749, lng: -122.4194}
 
-        const latitude = parseFloat(37.7749); // A/a Location
-        const longitude = parseFloat(-122.4194);
-
         const mapOptions = {
           center: myLatLng, // this is SF
           zoom: 4,
@@ -31,30 +28,10 @@
           title: 'Click to zoom'
         })
 
-        map.addListener('center_changed', function () {
-          // 3 seconds after the center of the map has changed, pan back to the
-          // marker.
-          window.setTimeout(function () {
-            map.panTo(marker.getPosition());
-          }, 10000);
-        });
-
         marker.addListener('click', function () {
           map.setZoom(14);
           map.setCenter(marker.getPosition());
         });
-
-        map.addListener('click', function (e) {
-          placeMarkerAndPanTo(e.latLng, map);
-        });
-
-        function placeMarkerAndPanTo(latLng, map) {
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: window.map
-          });
-          map.panTo(latLng);
-        }
 
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
