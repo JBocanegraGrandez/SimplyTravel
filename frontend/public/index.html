@@ -10,56 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Kaushan+Script" rel="stylesheet">
     
     <script>
-      window.initMap = () => {
-        var myLatLng = {lat: 37.7749, lng: -122.4194}
-
-        const mapOptions = {
-          center: myLatLng, // this is SF
-          zoom: 4,
-          mapTypeControl: false
-        };
-        
-        window.map = new window.google.maps.Map(document.getElementById("google-map"), mapOptions);
-        window.infoWindow = new google.maps.InfoWindow;
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: window.map,
-          title: 'Click to zoom'
-        })
-
-        marker.addListener('click', function () {
-          map.setZoom(14);
-          map.setCenter(marker.getPosition());
-        });
-
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Start by clicking on the map!');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function () {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-          infoWindow.setPosition(pos);
-          infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
-          infoWindow.open(map);
-        }
-      }
     </script>
 
 
