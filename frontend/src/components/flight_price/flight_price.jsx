@@ -14,6 +14,7 @@ class FlightPrice extends React.Component {
     };
 
     this.flightPriceRequest = this.flightPriceRequest.bind(this);
+    this.nearestAirport = this.nearestAirport.bind(this);
     this.renderDropDown = this.renderDropDown.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +22,7 @@ class FlightPrice extends React.Component {
 
   componentDidMount() {
     // this.props.pinFlightPrice({flight: 699})
-    // this.nearestAirport({this.props.location.lng}, {this.props.location.lat}, {this.props.destination.lng}, {this.props.destination.lat}); // Appacademy -> france
+    // this.nearestAirport(this.props.location.lng, this.props.location.lat, this.props.destination.lng, this.props.destination.lat); // Appacademy -> france
     // this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
   }
   
@@ -37,7 +38,7 @@ class FlightPrice extends React.Component {
   nearestAirport(nearlong, nearlat, destlong, destlat) {
     axios
       .get(
-        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=b5AUHYrHUoQG5pRPGCIWg9gFGH2cpulE&latitude=${nearlat}&longitude=${nearlong}`
+        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey= need key here &latitude=${nearlat}&longitude=${nearlong}`
         )
       .then(response => {
         this.setState({ nearestAirport: response.data });
@@ -48,7 +49,7 @@ class FlightPrice extends React.Component {
 
     axios
       .get(
-        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=b5AUHYrHUoQG5pRPGCIWg9gFGH2cpulE&latitude=${destlat}&longitude=${destlong}`
+        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey= need key here &latitude=${destlat}&longitude=${destlong}`
       )
       .then(response => {
         this.setState({ destinationAirport: response.data });
@@ -70,7 +71,7 @@ class FlightPrice extends React.Component {
     console.log(day)
     axios
       .get(
-      `https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=b5AUHYrHUoQG5pRPGCIWg9gFGH2cpulE&origin=${locAirport}&destination=${destAirport}&departure_date=${year}-${month}-${day}&number_of_results=1`
+        `https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey= need key here &origin=${locAirport}&destination=${destAirport}&departure_date=${year}-${month}-${day}&number_of_results=1`
       )
       .then(response => {
         this.setState({ flight: response.data });
@@ -210,7 +211,7 @@ class FlightPrice extends React.Component {
     let combinedFlights;
     if (this.state.nearestAirport === null && this.state.destinationAirport === null &&
       this.state.flight === null) {
-      this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
+      this.nearestAirport(this.props.location.lng, this.props.location.lat, this.props.destination.lng, this.props.destination.lat); // Appacademy -> france
     }
     if (this.state.nearestAirport !== null && this.state.destinationAirport !== null && 
       this.state.flight === null) {
