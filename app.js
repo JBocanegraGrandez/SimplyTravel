@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const express = require("express");
 const app = express();
-const port = process.env.Port || 5000;
+const port = process.env.PORT || 5000;
 const users = require("./routes/api/users");
 const events = require("./routes/api/events");
 const bodyParser = require('body-parser');
