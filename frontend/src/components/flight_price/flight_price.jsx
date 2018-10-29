@@ -209,15 +209,17 @@ class FlightPrice extends React.Component {
 
   render() {
     let combinedFlights;
+    
     if (this.state.nearestAirport === null && this.state.destinationAirport === null &&
       this.state.flight === null) {
       this.nearestAirport(this.props.location.lng, this.props.location.lat, this.props.destination.lng, this.props.destination.lat); // Appacademy -> france
     }
-    if (this.state.nearestAirport !== null && this.state.destinationAirport !== null && 
+
+    if (this.state.nearestAirport !== null && this.state.destinationAirport !== null &&
       this.state.flight === null) {
+      debugger
       this.flightPriceRequest(this.state.nearestAirport[0].airport, this.state.destinationAirport[0].airport);
     }
-
     if (this.state.flight) {
       combinedFlights = this.state.flight.results[0].itineraries[0].outbound.flights.map(
         flight => {
