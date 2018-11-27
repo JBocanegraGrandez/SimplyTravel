@@ -10,7 +10,8 @@ class FlightPrice extends React.Component {
       currentDate: null,
       nearestAirport: null,
       destinationAirport: null,
-      dropdownVisible: false
+      dropdownVisible: false,
+      oldDest: null
     };
 
     this.flightPriceRequest = this.flightPriceRequest.bind(this);
@@ -20,15 +21,6 @@ class FlightPrice extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    // this.props.pinFlightPrice({flight: 699})
-    // this.nearestAirport(this.props.location.lng, this.props.location.lat, this.props.destination.lng, this.props.destination.lat); // Appacademy -> france
-    // this.nearestAirport('-122.40135179999999', '37.7989666', '-0.3983926967030129', '47.18662787406336'); // Appacademy -> france
-  }
-  
-  componentWillMount() {
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     this.props
@@ -36,27 +28,29 @@ class FlightPrice extends React.Component {
   }
 
   nearestAirport(nearlong, nearlat, destlong, destlat) {
-    axios
-      .get(
-        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=3m9Zrcb8aKQ3jfgCVXWznoXIe13z8BLY&latitude=${nearlat}&longitude=${nearlong}`
-        )
-      .then(response => {
-        this.setState({ nearestAirport: response.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    if (nearlong !== undefined && nearlat !== undefined && destlong !== undefined && destlat !== undefined) {
+      axios
+        .get(
+          `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=3m9Zrcb8aKQ3jfgCVXWznoXIe13z8BLY&latitude=${nearlat}&longitude=${nearlong}`
+          )
+        .then(response => {
+          this.setState({ nearestAirport: response.data });
+        })
+        .catch(err => {
+          console.log(err);
+        });
 
-    axios
-      .get(
-        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=3m9Zrcb8aKQ3jfgCVXWznoXIe13z8BLY&latitude=${destlat}&longitude=${destlong}`
-      )
-      .then(response => {
-        this.setState({ destinationAirport: response.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      axios
+        .get(
+          `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=3m9Zrcb8aKQ3jfgCVXWznoXIe13z8BLY&latitude=${destlat}&longitude=${destlong}`
+        )
+        .then(response => {
+          this.setState({ destinationAirport: response.data });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 
 
@@ -207,9 +201,13 @@ class FlightPrice extends React.Component {
     );
   }
 
-  render() {
+  checkFlights() {
     let combinedFlights;
 
+    if (this.state.oldDest !== this.props.destination) {
+      this.setState({ oldDest: this.props.destination, nearestAirport: null, destinationAirport: null, flight: null });
+    }
+    
     if (this.state.nearestAirport === null && this.state.destinationAirport === null &&
       this.state.flight === null) {
       this.nearestAirport(this.props.location.lng, this.props.location.lat, this.props.destination.lng, this.props.destination.lat); // Appacademy -> france
@@ -218,6 +216,7 @@ class FlightPrice extends React.Component {
     if (this.state.nearestAirport !== null && this.state.destinationAirport !== null &&
       this.state.flight === null) {
       this.flightPriceRequest(this.state.nearestAirport[0].airport, this.state.destinationAirport[0].airport);
+      console.log("check") //problem, the first call makes it 3x
     }
     if (this.state.flight) {
       combinedFlights = this.state.flight.results[0].itineraries[0].outbound.flights.map(
@@ -226,9 +225,18 @@ class FlightPrice extends React.Component {
         }
       );
     }
+
+    if (combinedFlights) {
+      return this.availFlight(combinedFlights)
+    } else {
+      return this.noFlight();
+    }
+  }
+
+  render() {
     return (
       <div className="flight-info-main-container">
-        {combinedFlights ? this.availFlight(combinedFlights) : this.noFlight()}
+        {this.checkFlights()}
       </div>
     );
   }

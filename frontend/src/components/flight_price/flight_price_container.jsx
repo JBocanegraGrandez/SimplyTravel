@@ -14,8 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    pinLocation: (location) => dispatch(pinLocation(location)),
-    pinDestination: (destination) => dispatch(pinDestination(destination)),
+    // pinLocation: (location) => dispatch(pinLocation(location)),
+    // pinDestination: (destination) => dispatch(pinDestination(destination)),
     pinFlightPrice: (flightPrice) => dispatch(pinFlightPrice(flightPrice)),
   };
 };
