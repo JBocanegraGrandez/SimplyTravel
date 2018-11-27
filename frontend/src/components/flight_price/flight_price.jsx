@@ -38,7 +38,7 @@ class FlightPrice extends React.Component {
   nearestAirport(nearlong, nearlat, destlong, destlat) {
     axios
       .get(
-        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=AvrAMRvVBrXJA89mKwfYTtRWkufuwAZI&latitude=${nearlat}&longitude=${nearlong}`
+        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=3m9Zrcb8aKQ3jfgCVXWznoXIe13z8BLY&latitude=${nearlat}&longitude=${nearlong}`
         )
       .then(response => {
         this.setState({ nearestAirport: response.data });
@@ -49,7 +49,7 @@ class FlightPrice extends React.Component {
 
     axios
       .get(
-        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=AvrAMRvVBrXJA89mKwfYTtRWkufuwAZI&latitude=${destlat}&longitude=${destlong}`
+        `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=3m9Zrcb8aKQ3jfgCVXWznoXIe13z8BLY&latitude=${destlat}&longitude=${destlong}`
       )
       .then(response => {
         this.setState({ destinationAirport: response.data });
@@ -71,7 +71,7 @@ class FlightPrice extends React.Component {
     console.log(day)
     axios
       .get(
-        `https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=AvrAMRvVBrXJA89mKwfYTtRWkufuwAZI&origin=${locAirport}&destination=${destAirport}&departure_date=${year}-${month}-${day}&number_of_results=1`
+        `https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=3m9Zrcb8aKQ3jfgCVXWznoXIe13z8BLY&origin=${locAirport}&destination=${destAirport}&departure_date=${year}-${month}-${day}&number_of_results=1`
       )
       .then(response => {
         this.setState({ flight: response.data });
@@ -209,7 +209,7 @@ class FlightPrice extends React.Component {
 
   render() {
     let combinedFlights;
-    
+
     if (this.state.nearestAirport === null && this.state.destinationAirport === null &&
       this.state.flight === null) {
       this.nearestAirport(this.props.location.lng, this.props.location.lat, this.props.destination.lng, this.props.destination.lat); // Appacademy -> france
@@ -217,7 +217,6 @@ class FlightPrice extends React.Component {
 
     if (this.state.nearestAirport !== null && this.state.destinationAirport !== null &&
       this.state.flight === null) {
-      debugger
       this.flightPriceRequest(this.state.nearestAirport[0].airport, this.state.destinationAirport[0].airport);
     }
     if (this.state.flight) {

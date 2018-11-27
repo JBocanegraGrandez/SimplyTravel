@@ -6,6 +6,10 @@ const mainHeaderAuth = ({currentUser, logoutUser}) => {
     <div className="about-us-header-div">
       <Link to="/about" className="link-blank"><button>About us</button></Link>
     </div>
+      <div className="not-logged-in-header-div">
+      <Link to="/map" className="link-blank2">
+        <button><img className='world-logo' src="http://kabramkrafts.com/wp-content/uploads/2017/04/earth.svg"></img></button></Link>
+    </div>
     <div className="main-header-divider"></div>
     <div className="log-in-header-div">
       <Link to="/login" className="link-blank"><button>Log In</button></Link>
