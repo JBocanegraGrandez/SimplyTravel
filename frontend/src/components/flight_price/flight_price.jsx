@@ -27,7 +27,7 @@ class FlightPrice extends React.Component {
       .pinFlightPrice({flight: this.state.flight})
   }
 
-  nearestAirport(nearlong, nearlat, destlong, destlat) {
+  nearestAirport(nearlong = -122.401352, nearlat = 37.798967, destlong, destlat) {
     if (nearlong !== undefined && nearlat !== undefined && destlong !== undefined && destlat !== undefined) {
       axios
         .get(
@@ -59,7 +59,7 @@ class FlightPrice extends React.Component {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate() + 1;
-    //need to padd months if below 10
+    //padding if month and day below 10
     if (month < 10) {
       month = "0" + month;
     }
@@ -67,7 +67,7 @@ class FlightPrice extends React.Component {
     if (day < 10) {
       day = "0" + day;
     }
-    
+
     console.log(year)
     console.log(month)
     console.log(day)
