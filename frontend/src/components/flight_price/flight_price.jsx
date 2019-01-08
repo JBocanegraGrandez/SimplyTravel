@@ -61,11 +61,11 @@ class FlightPrice extends React.Component {
     const day = date.getDate() + 1;
     //padding if month and day below 10
     if (month < 10) {
-      month = "0" + month;
+      month = "0" + month.toString();
     }
 
     if (day < 10) {
-      day = "0" + day;
+      day = "0" + day.toString();
     }
 
     console.log(year)
