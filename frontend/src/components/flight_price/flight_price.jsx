@@ -55,10 +55,10 @@ class FlightPrice extends React.Component {
 
 
   flightPriceRequest(locAirport, destAirport) {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate() + 1;
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate() + 1;
     //padding if month and day below 10
     if (month < 10) {
       month = "0" + month.toString();
