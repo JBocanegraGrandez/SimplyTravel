@@ -60,6 +60,14 @@ class FlightPrice extends React.Component {
     const month = date.getMonth() + 1;
     const day = date.getDate() + 1;
     //need to padd months if below 10
+    if (month < 10) {
+      month = "0" + month;
+    }
+
+    if (day < 10) {
+      day = "0" + day;
+    }
+    
     console.log(year)
     console.log(month)
     console.log(day)
