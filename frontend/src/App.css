@@ -126,7 +126,23 @@ table {
 .main-page-search-bar-container{
   display: flex;
   flex-direction: row;
-  width: 1000px;
+  width: 1050px;
+}
+
+.world-button {
+  height: 100%;
+  width: 70px;
+  background-color: lightgray;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  border: 0px;
+  padding: 0 0;
+  cursor: pointer;
+}
+
+.world-logo {
+  width: 50px;
+  height: 50px;
 }
 
 .log-in-header-div button{
@@ -145,26 +161,6 @@ table {
 }
 
 .log-in-header-div:hover {
-  border-bottom: 2px solid white;
-}
-
-.not-logged-in-header-div button{
-  height: 37px;
-  width: 44px;
-  background-color: transparent;
-  color: white;
-  border-radius: 0px;
-  border: 0px;
-  border-bottom: 2px solid transparent;
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-right: 10px; /*not the best css here, just making the globe show up*/
-}
-
-.not-logged-in-header-div:hover {
   border-bottom: 2px solid white;
 }
 
@@ -196,17 +192,6 @@ table {
   font-size: 14px;
   cursor: pointer;
   margin-left: 0px;
-}
-
-.world-logo{
-
-  /* position: relative;
-  top: -8px;
-  margin: 2px; */
-
-    position: relative;
-  top: -2px;
-  margin: -7px;
 }
 
 .log-in-header-div2:hover {
@@ -739,7 +724,7 @@ hotels {
   border: honeydew;
   display: block;
   width: 100%;
-  padding: 16px;
+  padding: 20px;
   font-size: 16px;
   border-radius: 2px;
   outline: none;
