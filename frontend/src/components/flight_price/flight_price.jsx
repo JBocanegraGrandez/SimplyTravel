@@ -11,8 +11,10 @@ class FlightPrice extends React.Component {
       nearestAirport: null,
       destinationAirport: null,
       dropdownVisible: false,
-      oldDest: null
+      oldDest: null,
     };
+
+    this.count = 0;
 
     this.flightPriceRequest = this.flightPriceRequest.bind(this);
     this.nearestAirport = this.nearestAirport.bind(this);
@@ -59,6 +61,7 @@ class FlightPrice extends React.Component {
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
     let day = date.getDate() + 1;
+
     //padding if month and day below 10
     if (month < 10) {
       month = "0" + month.toString();
@@ -68,9 +71,6 @@ class FlightPrice extends React.Component {
       day = "0" + day.toString();
     }
 
-    console.log(year)
-    console.log(month)
-    console.log(day)
     axios
       .get(
         `https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=07tnwsXvMBArtGYtAbIJEX5kAYmNyjR7&origin=${locAirport}&destination=${destAirport}&departure_date=${year}-${month}-${day}&number_of_results=1`
@@ -216,17 +216,16 @@ class FlightPrice extends React.Component {
       this.setState({ oldDest: this.props.destination, nearestAirport: null, destinationAirport: null, flight: null });
     }
     
-    if (this.state.nearestAirport === null && this.state.destinationAirport === null &&
+    else if (this.state.nearestAirport === null && this.state.destinationAirport === null &&
       this.state.flight === null) {
-      this.nearestAirport(this.props.location.lng, this.props.location.lat, this.props.destination.lng, this.props.destination.lat); // Appacademy -> france
+      this.nearestAirport(this.props.location.lng, this.props.location.lat, this.props.destination.lng, this.props.destination.lat);
     }
 
-    if (this.state.nearestAirport !== null && this.state.destinationAirport !== null &&
+    else if (this.state.nearestAirport !== null && this.state.destinationAirport !== null &&
       this.state.flight === null) {
       this.flightPriceRequest(this.state.nearestAirport[0].airport, this.state.destinationAirport[0].airport);
-      console.log("check") //problem, the first call makes it 3x
     }
-    if (this.state.flight) {
+    else if (this.state.flight) {
       combinedFlights = this.state.flight.results[0].itineraries[0].outbound.flights.map(
         flight => {
           return <FlightPriceItem key={flight.arrives_at} flight={flight} />;
