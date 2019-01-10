@@ -10,11 +10,11 @@ import {
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import MainHeader from './header/main_header';
 import SignUpFormContainer from "./session_form/signup_form_container";
-import LogInFormContainer from "./session_form/login_form_container.jsx";
+import LogInFormContainer from "./session_form/login_form_container";
 import Hotels from "./hotels/hotels.jsx";
 import FlightPriceContainer from "./flight_price/flight_price_container";
 import MapContainer from './map/map_container';
-import IndexContainer from './home/Index_container';
+import IndexContainer from "./home/index_container";
 
 
 
