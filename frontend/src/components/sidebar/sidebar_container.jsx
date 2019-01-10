@@ -1,5 +1,6 @@
 import Sidebar from './sidebar';
 import { connect } from 'react-redux';
+import { pinLocation } from "../../actions/location_actions";
 
 const mapStateToProps = state => {
   return {
@@ -11,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    pinLocation: location => dispatch(pinLocation(location)),
   };
 }
 

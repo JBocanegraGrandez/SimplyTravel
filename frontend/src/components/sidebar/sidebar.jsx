@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import LocationSearchInput from "../location_search_bar/location_search_input";
+import LocationSearchInputContainer from "../location_search_bar/location_search_input_container";
 import FlightPriceContainer from "../flight_price/flight_price_container";
 
 class Sidebar extends React.Component {
@@ -29,7 +29,7 @@ class Sidebar extends React.Component {
             </div>
             <img src="https://cdn1.iconfinder.com/data/icons/arrows-ii/24/Material_icons-02-55-512.png" className="closebtn" onClick={this.closeNav} />
             <div className="location-search-container">
-              <LocationSearchInput />
+              <LocationSearchInputContainer />
             </div>
             <div className="flights-container">
               <FlightPriceContainer />
