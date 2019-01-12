@@ -1,14 +1,17 @@
-# BETTERNOTE
+# SimplyTravel
 
 [SimplyTravel](https://simply-travel.herokuapp.com/#/) is a FullStack original group project created by engineers John Huang, Jorge Bocanegra, Henry Chu and Alejandro Chang. SimplyTravel is a single page application that uses the MERN (MongoDB, Express.js, React/Redux and Node.js) Stack. The project was designed and built in 8 days.
 
 SimplyTravel is a one-stop-shop traveling application that allows user to choose a place on the map around the world, based on their location, and be able to get the closest aiport, cheapest flight and most direct way to get to the specific place chosen. .
 
 ## Home page
-![alt text]()
+![alt text](/app/assets/images/homescreen.png)
 
 ## Main Page
-![alt text]()
+![alt text](/app/assets/images/map.png)
+
+## Alternate Map Styles
+![alt text](/app/assets/images/map2.png)
 
 ## Features
 * Secured backend user authentication using MongoDB Database using mLab.
@@ -22,14 +25,13 @@ SimplyTravel is a one-stop-shop traveling application that allows user to choose
 Through the Google's geolocation we're able to get a specific user's location which is necessary for the functionality of this application. 
 
 <!-- # Saving User's updates
-There are many different ways to handle the users's input which is created inside the Quill Editor. At first, I used a setTimeout function that was triggered after every three seconds updating the current note that the user was using. However, after close inspection and the realization that setTimeout is determined by a series of factors that could affect the user's experience I opted out to use a more efficient approach - debounce. Debounce is a much better event handler, as it allows us to group multiple sequential calls into a single one. The sequential calls in this situation occur while the user is typing in the text editor. As soon as the user stops typing, the event is triggered through debounce updating the user's current note body and title. 
 
 ```javascript
 
 ``` -->
 
-# Betternote in Action
-![](/app/assets/images/)
+<!-- # SimplyTravel in Action
+![](/app/assets/images/) -->
 
 
 # Project Design
