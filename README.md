@@ -2,10 +2,10 @@
 
 [SimplyTravel](https://simply-travel.herokuapp.com/#/) is a FullStack original group project created by engineers John Huang, Jorge Bocanegra, Henry Chu and Alejandro Chang. SimplyTravel is a single page application that uses the MERN (MongoDB, Express.js, React/Redux and Node.js) Stack. The project was designed and built in 8 days.
 
-SimplyTravel is a one-stop-shop traveling application that allows user to choose a place on the map around the world, based on their location, and be able to get the closest aiport, cheapest flight and most direct way to get to the specific place chosen. .
-
 ## Home page
 ![alt text](/app/assets/images/homescreen.png)
+
+SimplyTravel is a one-stop-shop traveling application that allows user to choose a place on the map around the world, based on their location, and be able to get the closest aiport, cheapest flight and most direct way to get to the specific place chosen.
 
 ## Main Page
 ![alt text](/app/assets/images/map.png)
