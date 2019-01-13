@@ -216,6 +216,7 @@ img {
 }
 
 .team {
+  font-family: 'Crete Round', serif;
   font-size: 45px;
   font-weight: 300;
   display: flex;
@@ -273,4 +274,16 @@ i.icon, i.icons {
   justify-content: space-evenly;
   padding-left: 13%;
   padding-right: 13%;
+}
+
+i.icon.linkedin:before {
+  color: #0077B5;
+}
+
+i.icon.globe:before {
+  color: #A9A9A9;
+}
+
+i.icon.google.plus.g:before {
+  color: #0F9D58;
 }
