@@ -90,7 +90,7 @@ class SignUpForm extends React.Component {
                         </button>
                         <div className="fine-print">
                           <p className="fine-print2">
-                            Already on Simple Travel?
+                            Already have an account?
                             <Link to="/login" onClick={this.props.clearErrors} className="link">
                               {" "}
                               Log in
