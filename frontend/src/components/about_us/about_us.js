@@ -8,7 +8,6 @@ const aboutUs = () => {
           <div className="row justify-content-center">
             <div className="media-container-column title col-12 col-md-10">
               <h2 className="align-left mbr-bold mbr-white pb-3 mbr-fonts-style display-2">
-                Like our Work? Want to Connect?
               </h2>
               <h3 className="mbr-section-subtitle align-left mbr-light mbr-white pb-3 mbr-fonts-style display-5" />
             </div>
@@ -16,7 +15,8 @@ const aboutUs = () => {
         </div>
       </section>
       <section className="section2">
-        <h2 className="team">Meet the Team!</h2>
+        <h2 className="team">Want to Connect?</h2>
+        <h5 className="team2">Meet the Team!</h5>
         <div className="gallery-container">
           <div className="gallery">
             <img src="https://s3-us-west-2.amazonaws.com/aa-progress-tracker/students/avatars/000/002/974/medium/Alejandro_Chang.jpg?1534882493" alt="alejandro" />

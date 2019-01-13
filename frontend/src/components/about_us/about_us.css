@@ -2,7 +2,7 @@
 .cid-reVqO8OAmQ {
   padding-top: 90px;
   padding-bottom: 90px;
-  background-image: url(./paintedladies.jpeg);
+  background-image: url(./p1.jpeg);
 }
 
 section {
@@ -217,13 +217,20 @@ img {
 
 .team {
   font-family: 'Crete Round', serif;
-  font-size: 45px;
+  font-size: 42px;
   font-weight: 300;
   display: flex;
   justify-content: center;
-  padding-top: 50px;
-  height: 120px;
-  padding-bottom: 105px;
+  padding-top: 30px;
+}
+
+.team2 {
+  font-family: 'Crete Round', serif;
+  font-size: 22px;
+  font-weight: 100;
+  display: flex;
+  justify-content: center;
+  height: 60px;
 }
 
 div.gallery {
