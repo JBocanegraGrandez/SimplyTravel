@@ -264,8 +264,8 @@ div.desc-2 {
 
 i.icon, i.icons {
   font-size: 1.7em;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 13%;
+  padding-right: 13%;
   padding-top: 10%;
 }
 
@@ -280,8 +280,12 @@ i.icon.linkedin:before {
   color: #0077B5;
 }
 
+i.icon.github:before {
+  color: black;
+}
+
 i.icon.globe:before {
-  color: #A9A9A9;
+  color: darkolivegreen;
 }
 
 i.icon.google.plus.g:before {

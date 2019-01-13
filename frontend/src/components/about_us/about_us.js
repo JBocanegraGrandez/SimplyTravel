@@ -23,10 +23,9 @@ const aboutUs = () => {
             <div className="desc">Alejandro Chang</div>
             <div className="desc-2">Software Engineer</div>
             <div className="logos">
-              <a href="https://www.alejandrochang.com"><i class="globe icon" /></a>
-              <i class="google plus g icon" />
-              <i class="github icon" />
-              <i class="linkedin icon" />
+              <a href="https://www.alejandrochang.com" target="_blank"><i class="globe icon" /></a>
+              <a href="https://github.com/alejandrochang" target="_blank"><i class="github icon" /></a>
+              <a href="https://www.linkedin.com/in/alejandro-chang/" target="_blank"><i class="linkedin icon" /></a>
             </div>
           </div>
           <div className="gallery">
@@ -35,7 +34,6 @@ const aboutUs = () => {
             <div className="desc-2">Software Engineer</div>
             <div className="logos">
               <i class="globe icon" />
-              <i class="google plus g icon" />
               <i class="github icon" />
               <i class="linkedin icon" />
             </div>
@@ -46,7 +44,6 @@ const aboutUs = () => {
             <div className="desc-2">Software Engineer</div>
             <div className="logos">
               <i class="globe icon" />
-              <i class="google plus g icon" />
               <i class="github icon" />
               <i class="linkedin icon" />
             </div>
@@ -57,7 +54,6 @@ const aboutUs = () => {
             <div className="desc-2">Software Engineer</div>
             <div className="logos">
               <i class="globe icon" />
-              <i class="google plus g icon" />
               <i class="github icon" />
               <i class="linkedin icon" />
             </div>
