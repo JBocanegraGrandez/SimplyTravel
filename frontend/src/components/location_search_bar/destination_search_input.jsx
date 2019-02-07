@@ -18,10 +18,8 @@ class DestinationSearchInput extends React.Component {
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => {
-        this.props.pinDestination(latLng);
-        console.log("Success", latLng);
-      })
+      .then(latLng => this.props.pinDestination(latLng))
+      .then(() => this.setState({ address }))
       .catch(error => console.error("Error", error));
   };
 

@@ -132,8 +132,7 @@ table {
 .world-button {
   height: 100%;
   width: 70px;
-  background-color: lightgray;
-  color: white;
+  background-color: #1af326;
   border-radius: 0 5px 5px 0;
   border: 0px;
   padding: 0 0;

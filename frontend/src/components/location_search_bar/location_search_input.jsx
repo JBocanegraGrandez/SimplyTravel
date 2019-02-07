@@ -19,18 +19,18 @@ class LocationSearchInput extends React.Component {
   handleSelect(address) {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => {
-          this.props.pinLocation(latLng);
-          console.log("Success", latLng);
-        }
-      )
+      .then(latLng => this.props.pinLocation(latLng))
+      .then(() => this.setState({ address }))
       .catch(error => console.error("Error", error));
   };
 
   render() {
     return (
-    <PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect.bind(this)} googleCallbackName="myCallbackFunLocationSearchInput
-LocationSearchInputc">
+    <PlacesAutocomplete 
+      value={this.state.address}
+      onChange={this.handleChange}
+      onSelect={this.handleSelect.bind(this)}
+      googleCallbackName="myCallbackFunLocationSearchInputLocationSearchInputc">
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => <div className="location-input-container">
               <input {...getInputProps({
                   placeholder: "Current location ...",
