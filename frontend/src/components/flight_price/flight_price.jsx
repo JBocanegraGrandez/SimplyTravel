@@ -1,6 +1,13 @@
 import React from 'react';
 import FlightPriceItem from './flight_price_item';
-import axios from 'axios';
+// import axios from 'axios';
+
+var Amadeus = require('amadeus');
+
+var amadeus = new Amadeus({
+  clientId: 'JRgIyoVdBIZtRtlAaBrdjeETPAzLGXVT',
+  clientSecret: 'psWy6pSHE2gsOY0t'
+});
 
 class FlightPrice extends React.Component {
   constructor(props) {
@@ -29,12 +36,13 @@ class FlightPrice extends React.Component {
       .pinFlightPrice({flight: this.state.flight})
   }
 
-  nearestAirport(nearlong = -122.401352, nearlat = 37.798967, destlong, destlat) {
+  nearestAirport(nearlong = -122.401352, nearlat = 37.798967, destlong, destlat) { //working on new developer portal
     if (nearlong !== undefined && nearlat !== undefined && destlong !== undefined && destlat !== undefined) {
-      axios
-        .get(
-          `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=07tnwsXvMBArtGYtAbIJEX5kAYmNyjR7&latitude=${nearlat}&longitude=${nearlong}`
-          )
+      amadeus.client
+        .get('/v1/reference-data/locations/airports', {
+          longitude: nearlong,
+          latitude: nearlat,
+        })
         .then(response => {
           this.setState({ nearestAirport: response.data });
         })
@@ -42,10 +50,11 @@ class FlightPrice extends React.Component {
           console.log(err);
         });
 
-      axios
-        .get(
-          `https://api.sandbox.amadeus.com/v1.2/airports/nearest-relevant?apikey=07tnwsXvMBArtGYtAbIJEX5kAYmNyjR7&latitude=${destlat}&longitude=${destlong}`
-        )
+      amadeus.client
+        .get('/v1/reference-data/locations/airports', {
+          latitude: destlat,
+          longitude: destlong
+        })
         .then(response => {
           this.setState({ destinationAirport: response.data });
         })
@@ -56,7 +65,7 @@ class FlightPrice extends React.Component {
   }
 
 
-  flightPriceRequest(locAirport, destAirport) {
+  flightPriceRequest(locAirport, destAirport) { //working on new developer portal
     let date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
@@ -71,10 +80,14 @@ class FlightPrice extends React.Component {
       day = "0" + day.toString();
     }
 
-    axios
-      .get(
-        `https://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?apikey=07tnwsXvMBArtGYtAbIJEX5kAYmNyjR7&origin=${locAirport}&destination=${destAirport}&departure_date=${year}-${month}-${day}&number_of_results=1`
-      )
+    amadeus.client
+      .get("/v1/shopping/flight-offers", {
+        origin: locAirport,
+        destination: destAirport,
+        departureDate: `${year} - ${month} - ${day}`,
+        adults: 1,
+        max: 1
+      })
       .then(response => {
         this.setState({ flight: response.data });
       })
@@ -240,6 +253,7 @@ class FlightPrice extends React.Component {
     }
   }
 
+  
   render() {
     return (
       <div className="flight-info-main-container">
