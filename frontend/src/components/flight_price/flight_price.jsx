@@ -39,12 +39,12 @@ class FlightPrice extends React.Component {
   nearestAirport(nearlong = -122.401352, nearlat = 37.798967, destlong, destlat) { //working on new developer portal
     if (nearlong !== undefined && nearlat !== undefined && destlong !== undefined && destlat !== undefined) {
       amadeus.client
-        .get('/v1/reference-data/locations/airports', {
-          longitude: nearlong,
-          latitude: nearlat,
+        .get("/v1/reference-data/locations/airports", {
+          longitude: `${nearlong}`, //-122.401352
+          latitude: `${nearlat}` //37.798967
         })
         .then(response => {
-          this.setState({ nearestAirport: response.data });
+          this.setState({ nearestAirport: response.data[0].iataCode }, console.log(response.data[0].iataCode));
         })
         .catch(err => {
           console.log(err);
@@ -52,11 +52,11 @@ class FlightPrice extends React.Component {
 
       amadeus.client
         .get('/v1/reference-data/locations/airports', {
-          latitude: destlat,
-          longitude: destlong
+          latitude: `${destlat}`,
+          longitude: `${destlong}`
         })
         .then(response => {
-          this.setState({ destinationAirport: response.data });
+          this.setState({ destinationAirport: response.data[0].iataCode }, console.log(response.data[0].iataCode));
         })
         .catch(err => {
           console.log(err);
@@ -82,14 +82,14 @@ class FlightPrice extends React.Component {
 
     amadeus.client
       .get("/v1/shopping/flight-offers", {
-        origin: locAirport,
-        destination: destAirport,
+        origin: `${locAirport}`,
+        destination: `${destAirport}`,
         departureDate: `${year} - ${month} - ${day}`,
-        adults: 1,
-        max: 1
+        adults: `1`,
+        max: `1`
       })
       .then(response => {
-        this.setState({ flight: response.data });
+        this.setState({ flight: response.data[0].offerItems[0] });
       })
       .catch(err => {
         console.log(err);
@@ -122,7 +122,8 @@ class FlightPrice extends React.Component {
   }
 
   availFlight(combinedFlights) {
-    let outbound = this.state.flight.results[0].itineraries[0].outbound;
+    // let outbound = this.state.flight.results[0].itineraries[0].outbound;
+    let outbound = this.state.flight.services[0].segments[0].flightSegment;
     let lastFlight = outbound.flights[outbound.flights.length - 1];
     return (
       <div className='initial-flight-display-container'>
@@ -133,7 +134,7 @@ class FlightPrice extends React.Component {
               Price:
             </div>
             <div className="initial-flight-info">
-              {this.state.flight.results[0].fare.total_price}
+              {this.state.flight.price.total}
             </div>
           </div>
           <div className="initial-flight-info-container">
@@ -141,7 +142,7 @@ class FlightPrice extends React.Component {
               Duration: 
             </div>
             <div className="initial-flight-info">
-              {outbound.duration}
+              {outbound.departure.duration}
             </div>
           </div>
           <div className="initial-flight-info-container">
@@ -255,9 +256,18 @@ class FlightPrice extends React.Component {
 
   
   render() {
+    amadeus.client
+      .get("/v1/shopping/flight-offers", {
+        origin: `SFO`,
+        destination: `TPE`,
+        departureDate: `2019-02-12`,
+        adults: `1`,
+        max: `1`
+      })
+      .then(res => console.log(res.data[0].offerItems[0]));
     return (
       <div className="flight-info-main-container">
-        {this.checkFlights()}
+        {/* {this.checkFlights()} */}
       </div>
     );
   }
