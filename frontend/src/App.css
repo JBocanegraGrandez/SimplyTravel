@@ -1,0 +1,789 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* css reset */
+/* ////// */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+ /* mainheadercss */
+
+.main-header-container {
+  width: 100%;
+  height: 64px;
+  /* position: absolute; */
+  background-color: #147bcd;
+  background: linear-gradient(#51a9ee,#147bcd);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.main-header-menu-wrap {
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.main-header-menu-left {
+  font-size: 32px;
+  font-family: Helvetica;
+  font-weight: 600;
+  color: white;
+}
+
+.menu-right {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 334px;
+  font-family: Helvetica;
+  padding-right: 30px;
+}
+
+.main-page-search-bar-container{
+  display: flex;
+  flex-direction: row;
+  width: 1050px;
+}
+
+.world-button {
+  height: 100%;
+  width: 70px;
+  background-color: #1af326;
+  border-radius: 0 5px 5px 0;
+  border: 0px;
+  padding: 0 0;
+  cursor: pointer;
+}
+
+.world-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.log-in-header-div button{
+  height: 37px;
+  width: 65px;
+  background-color: transparent;
+  color: white;
+  border-radius: 0px;
+  border: 0px;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 0px;
+}
+
+.log-in-header-div:hover {
+  border-bottom: 2px solid white;
+}
+
+.about-us-header-div button{
+  height: 37px;
+  width: 100px;
+  background-color: transparent;
+  color: white;
+  border-radius: 0px;
+  border: 0px;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 0px;
+}
+
+.log-in-header-div2 button{
+  height: 37px;
+  width: 44px;
+  background-color: transparent;
+  color: white;
+  border-radius: 0px;
+  border: 0px;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 0px;
+}
+
+.log-in-header-div2:hover {
+  border-bottom: 2px solid white;
+}
+.about-us-header-div button{
+  height: 37px;
+  width: 100px;
+  background-color: transparent;
+  color: white;
+  border-radius: 0px;
+  border: 0px;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 0px;
+}
+
+.about-us-header-div:hover {
+  border-bottom: 2px solid white;
+}
+.sign-up-header-div button{
+  height: 37px;
+  width: 104px;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  border: 2px solid white;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 0px;
+}
+
+.sign-up-header-div button:hover {
+  background-color: white;
+  color: #999999;
+}
+
+.main-header-divider {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  height: 20px;
+  width: 1px;
+  /* margin-left: 17px;
+  margin-right: 17px; */
+  background-color: white;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Dancing Script', cursive;
+}
+
+/* LOG IN/SIGN UP FORM */
+
+/* .background-container {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+} */
+.background-container {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+
+/* Flight */
+
+.flights-container {
+  display: flex;
+  background-color: #fff;
+  /* height: 425px; */
+  flex-direction: column;
+  margin: 18px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
+}
+
+.flight-info-main-container {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  padding: 15px 10px;
+  margin: 15px;
+  border: 1px solid #E6E6E6;
+  background-color: rgba(243, 243, 243, 0.89);
+  border-radius: 15px;
+  box-shadow: 0 1px 1px lightgrey;
+  font-size: 14px;
+}
+
+.initial-flight-display-container {
+  display: flex;
+}
+
+.initial-flight-display {
+  display: flex;
+  align-items: center;
+}
+
+.initial-flight-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 9px;
+}
+
+.initial-flight-info {
+  font-size: 15px;
+}
+
+.flight-info-and-booking-container{
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  flex-direction: column;
+  top: 183px;
+  width: 330px;
+  left: 34px;
+  border: 1px solid #E6E6E6;
+  background-color: rgba(243, 243, 243, 10.89);
+  border-radius: 15px;
+  box-shadow: 0 1px 1px lightgrey}
+
+.flight-items-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #E6E6E6;
+  margin: 2px;
+  border-radius: 15px;
+}
+
+.flight-items {
+  line-height: 1.5em;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Arial, sans-serif;
+}
+
+.flight-booking:hover input {
+  background: #bcbcbc;
+}
+
+.airline-logos {
+  max-width: 730px;
+  max-height: 80px;
+  padding-left: 29px;
+  margin-top: 5px;
+  padding-bottom: 16px;
+}
+
+.flight-booking-submit {
+}
+
+.sign-up-container {
+  /* background-color: red; */
+  /* height: 630px; */
+  /* width: 400px; */
+  padding: 20px;
+  /* border: 1px solid #e6e6e6; */
+}
+
+.auth-main {
+  /* opacity: 0.75; */
+  background: linear-gradient(transparent, white);
+  /* background-color: white; */
+  width: 300px;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  margin: 60px;
+  margin-left: 120px;
+  border: 1px groove black;
+  border-radius: 5px;
+  padding: 25px;
+}
+
+auth-holder
+
+.signup-form-bot-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form-bot {
+  display: flex;
+  flex-direction: column;
+}
+.signup-form-bot input {
+  margin-bottom: 9px;
+  font-size: 14px;
+  padding: 5px 9px;
+  border: 1px solid #999;
+  border-radius: 3px;
+}
+
+.sign-up-button {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid;
+  padding: 12px 18px 13px;
+  background-color: #147bcd;
+  background: linear-gradient(#51a9ee,#147bcd);
+  color: white;
+  border-color: #282c34;
+}
+
+.fine-print {
+  color: #999;
+  font-weight: normal;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.signup-title {
+  color: #0073bb;
+  width: 280px;
+}
+
+.link {
+  text-decoration: none;
+  color: #0066c0;
+  cursor: pointer;
+}
+/* Maps CSS */
+
+.google-map {
+  display: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
+.selector-control {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 13px;
+}
+
+/* Sidebar Container */
+
+.sidenav {
+  position: absolute;
+  z-index: 1;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+  transition: 1.2s;
+  padding-top: 60px;
+  height: 100vh;
+  max-width: 408px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  font-size: 36px;
+  width: 20px;
+  height: 20px;
+  top: 6px;
+  right: 3px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.location-container {
+  font-size: 17px;
+  font-family: 'Kaushan Script', cursive;
+  height: 25px;
+  padding-left: 85px;
+  margin-top: -35px;
+  padding-bottom: 15px;
+}
+
+.aboutus-container {
+  background-color: #fff;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  margin: 18px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
+}
+
+.hotels-container {
+  background-color: #fff;
+  height: 305px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  margin: 18px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
+}
+
+.dropdown-categories {
+  line-height: 26px;
+  padding-left: 20px;
+}
+
+.drink-icon {
+  height: 30px;
+  width: 30px;
+  padding-left: 18px;
+}
+
+.wifi-icon {
+  height: 30px;
+  width: 30px;
+  padding-left: 18px;
+}
+
+.hotel-icon {
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  right: 35px;
+  margin-top: -35px;
+}
+
+.hotel-name {
+  font-size: 26px;
+  font-weight: 600;
+  font-family: serif;
+}
+
+.hotel-location {
+
+}
+
+.hotel-rating {
+  padding-right: 10px;
+  display: table-cell;
+  width: 100%;
+  white-space: normal;
+  padding-bottom: 20px;
+  padding-top: 22px;
+  font-size: 18px;
+  font-family: cursive;
+}
+
+.hotel-name-container {
+  color: #000;
+  font-size: 15px;
+  line-height: 16px;
+  padding-bottom: 2px;
+  white-space: normal;
+}
+
+.hotels-inside-container {
+  padding-left: 32px;
+  padding-top: 20px;
+}
+
+.hotel-price {
+font-size: 22px;
+  font-weight: 500;
+  font-family: serif;
+  padding-left: 20px;
+  position: absolute;
+  padding-top: 6px;
+}
+
+.hotels-inside-container-2 {
+  height: 250px;
+  padding: 34px;
+  padding-right: 154px;
+  letter-spacing: 1px;
+}
+
+.rating-img {
+  width: 90px;
+  padding-left: 16px;
+}
+
+.optional-breakfast {
+  padding-left: 15px;
+}
+
+.optional-wifi {
+  padding-left: 14px;
+}
+
+.open-button {
+  position: absolute;
+  z-index: 10;
+  top: 12px;
+  width: 31px;
+  height: 31px;
+  left: 25px;
+}
+
+.open-button-container {
+  position: relative;
+}
+
+/* HOTELS START HERE */
+
+hotels {
+  /* position: fixed; */
+  z-index: 1;
+  width: 600px;
+  height: 100vh;
+  padding-top: 60px;
+  background-color: #f9f9f9;
+  overflow-x:hidden;
+}
+ 
+.hotels-container {
+  max-height: 100%;
+}
+
+.individual-selection {
+  width: 100%;
+  height: 400px;
+}
+
+.hotel-stats-container {
+
+}
+
+.image-container {
+
+}
+
+.hotel-name-price-container {
+
+}
+
+.hotel-name {
+
+}
+
+.hotel-price {
+
+}
+
+.hotel-rating {
+
+}
+
+.hotel-address {
+
+}
+
+.marketing-text {
+  height: 200px;
+}
+
+.amenities {
+  height: 100px;
+  width: 100%;
+}
+
+.hotel-amenities-container {
+
+}
+
+.hotel-amenities {
+}
+
+/* INDEX BACKGROUND */
+
+.modal-background {
+   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+   /* url("https://s3-us-west-1.amazonaws.com/bagquest-pro/profile/bg.JPG") repeat; */
+   url("./resources/collage.jpg") repeat;
+   position: fixed;
+   top: 0;
+   margin-top: 50px;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   height: 180vh;
+ 
+   z-index: -1;
+   animation: 6s bg alternate infinite;
+
+}
+
+@keyframes bg {
+  0% {
+    transform: translate3d(0,0,0);
+  }
+  100% {
+    transform: translate3d(0,-200px,0);
+  }
+}
+
+.modal-child {
+  position: fixed;
+  width: 375px;
+  height: 400px;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 307px;
+}
+
+/* Location Search Input */
+
+.location-search-input {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border: honeydew;
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  border-radius: 2px;
+  outline: none;
+  position: relative;
+}
+
+.autocomplete-dropdown-container {
+  position: absolute;
+  min-width: 640px;
+  z-index: 1;
+  border-radius: 2px;
+  height: 5px;
+  margin-top: 29px;
+}
+
+.location-input-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: 50%;
+}
+
+.location-search-container {
+  width: 713px;
+  left: 18px;
+  position: relative;
+}
+
+/* Home Seach Bar  */
+
+
+.home-title {
+  color: white;
+}
+
+h1 {
+  left: 220px;
+  line-height: 200px;
+  width: auto;
+  margin: 0;
+  position: static;
+  top: 60%;
+  font-size: 188px;
+  color: #ffffff;
+  font-family: 'Dancing Script', cursive;
+  padding-bottom: 60px;
+}
+
+.home-page {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  display: flex;
+}
+
+.home-icon {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 12px;
+  left: 219px;
+}
