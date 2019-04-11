@@ -1,144 +1,152 @@
 import React from 'react';
 import axios from 'axios';
-import StarRatingComponent from 'react-star-rating-component';
+import HotelIndexItem from './hotel_index_item';
+import HotelsNull from './hotels_null';
+
+var Amadeus = require('amadeus');
+
+var amadeus = new Amadeus({
+  clientId: 'ac2GxJR8XjAp73R7S7fMfUuCBfp8hTGZ',
+  clientSecret: 'sNyKSDDADPFKeQQv'
+});
 
 class Hotels extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      data: [],
-      lat: '37.7749',
-      lng: '-122.4194',
-      checkIn: '2018-11-01',
-      checkOut: '2018-11-03'
+      data: null,
+      price: null,
+      name: null,
+      address: null,
+      rating: null,
+      description: null,
+      breakfast: null,
+      wifi: null
+      // lat: '37.7749',
+      // lng: '-122.4194',
+      // checkIn: '2018-12-20',
+      // checkOut: '2018-12-23',
+      // flightData: '',
+      // lat: this.props.lat,
+      // lng: this.props.lng,
+      // checkIn: null,
+      // checkOut: null,
+
+      // realCheckIn: this.props.results[0].itineraries[0].outbound.flights[-1].arrives_at
     }
+
+    this.fetchHotels = this.fetchHotels.bind(this);
   }
 
-  // change interpolations to this.props
-  getHotels = () => {
-    axios
-      .get(
-        `http://api.sandbox.amadeus.com/v1.2/hotels/search-circle?latitude=${this.state.lat}&longitude=${this.state.lng}&radius=50&check_in=${this.state.checkIn}&check_out=${this.state.checkOut}&number_of_results=50&apikey=AvrAMRvVBrXJA89mKwfYTtRWkufuwAZI`
-      )
-      .then((response) => {
-        this.setState({ data: response.data.results });
+  componentDidMount() {
+    this.fetchHotels();
+  }
+
+  fetchHotels = () => {
+    amadeus.shopping.hotelOffers
+      .get({
+        latitude: this.props.lat,
+        longitude: this.props.lng
       })
+      .then(
+        response =>
+          this.setState(
+            {
+              price: response.data[0].offers[0].price.total,
+              name: response.data[0].hotel.name,
+              address:
+                response.data[0].hotel.address.lines[0] +
+                ", " +
+                response.data[0].hotel.address.cityName +
+                ", " +
+                response.data[0].hotel.address.stateCode +
+                " " +
+                response.data[0].hotel.address.postalCode,
+              rating: parseInt(response.data[0].hotel.rating),
+              description: response.data[0].hotel.description.text
+            }
+          )
+      );
+    // description: response.data[0].hotel.description.text
+    // price: response.data[0].offers[0].price.total;
+    // name: response.data[0].hotel.name
+    // address: response.data[0].hotel.address.lines[0];
+    // response.data[0].hotel.cityName / stateCode / postalCode / countryCode
+    // rating: response.data[0].hotel.rating
+    // amenities: breakfast - response.data[0].hotel.amenities (find WIFI or WI_FI or breakfast in Array)
+    // price currency, name, address, rating, amenities: breakfast, wifi, description
+    // this.setState({ data: response.data[0] });
+    // }).then(response => console.log(response.data[0]))
   }
 
-  // either do it inside .then or change another .then to manipulate data
-  // could also use setState if youre trying to update component
-  // promise.resolve to send data out of the asynchronous call
-
-  createStars = (el) => {
-    let stars; 
-    stars = (el.awards[0] === undefined) ? (
+  createStars = (rating) => {
+    let stars;
+    stars = (rating === undefined) ? (
       (stars = 0)
     ) : (
-        (stars = el.awards[0].rating)
+        (stars = rating)
       )
-      return stars;
+    return stars;
   }
 
   checkBreakfast = (el) => {
-    let test;
-    el.rooms.forEach( obj => {
-      // console.log(obj.descriptions);
-      obj.descriptions.forEach( desc => {
-        // console.log(desc);
+    let breakfast;
+    el.rooms.forEach(obj => {
+      obj.descriptions.forEach(desc => {
         if (desc.toLowerCase().includes("breakfast")) {
-            test = (<div>
-              "there is breakfast"
-            </div>)
-          ;
-        } else {
-          test =
-          <div>
-            "NO breakfast"
-          </div>
+          breakfast = <div>
+            Breakfast
+              <img className="breakfast-icon" src="https://cdn3.iconfinder.com/data/icons/food-set-3/91/Food_C203-512.png" />
+          </div>;
         }
       })
     })
-    console.log(test)
-    return test;
+    return breakfast;
+  }
+
+  internetCheck = (arr) => {
+    if (!arr) return;
+    let check;
+    arr.amenities.forEach(amen => {
+      if (amen.amenity.toLowerCase().includes("internet")) {
+        check = true;
+      }
+    })
+    return check
+  }
+
+  successfulRender() {
+    let hotels = this.state.data.map((hotel, idx) => {
+      if (idx === 0) {
+        return (
+          <HotelIndexItem
+            hotel={hotel}
+            createStars={this.createStars}
+            checkBreakfast={this.checkBreakfast}
+            internetCheck={this.internetCheck}
+            key={this.props.key} />
+        )
+      }
+    });
   }
 
   render() {
-    let stars;
-
-    return <div>
-        <div className="hotels">
-          <form onSubmit={this.getHotels}>
-            <input type="submit" value="Submit" />
-          </form>
-          <div className="hotels-container">
-            {this.state.data.map(el => (
-              <div className="individual-selection">
-                <div className="hotel-stats-container">
-                  <div className="hotel-name-price-container">
-                    <span className="hotel-name">{el.property_name}</span>
-                    <span className="hotel-price">
-                      {el.total_price.amount} USD - Total
-                    </span>
-                  </div>
-                  <div className="hotel-rating" />
-                  <div className="hotel-address">
-                    {el.address.line1} <br />
-                    {el.address.city}
-                    ,&nbsp;
-                    {el.address.postal_code}
-                    &nbsp;
-                    {el.address.country}
-                  </div>
-                  <div className="marketing-text">
-                    {el.marketing_text}
-                    <br />
-                    {el.amenities.map(ele => {
-                      if (ele.amenity.toLowerCase().includes("internet")) {
-                        return <div>render internet icons here</div>;
-                      }
-                    })}
-                  </div>
-                  <div className="image-container">
-                    {(stars = this.createStars(el))}
-                  <div>{ this.checkBreakfast(el) }</div>
-                  </div>
-                  <div className="testing">
-                    <StarRatingComponent
-                      name="rate1"
-                      starCount={5}
-                      value={stars}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>;
+    return (
+      <div className="hotels">
+        {this.props.lat ? <HotelIndexItem
+          price={this.state.price}
+          address={this.state.address}
+          hotel={this.state.name}
+          createStars={this.createStars}
+          rating={this.state.rating}
+          description={this.state.description}
+          internetCheck={this.internetCheck}
+          checkBreakfast={null}
+        /> : <HotelsNull />}
+      </div>
+    );
   }
 }
 
 
 export default Hotels;
-{/* { this.checkBreakfast(el) } */}
-
-
-// componentDidMount(){
-//   axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=hotel&key=AIzaSyBQzt2BjKglqfdpP4fb1d5beRvYK0A45ac`)
-//     .then(response => {
-//       locationObj = JSON.parse(response)
-//       const locations = response.data.results;
-//       this.setState({ locations })
-//     })
-// }
-
-
-// QUESTIONS:
-// what is loading: true and loading: false
-// will we have rendering problem if we pull the hotels data from componentDidMount rather than passing it down from the state
-// if no rendering problem, how can we let user favorite/save chosen hotels?
-// where are the hotel prices?
-
-
-// amadeus key 
-// AvrAMRvVBrXJA89mKwfYTtRWkufuwAZI
