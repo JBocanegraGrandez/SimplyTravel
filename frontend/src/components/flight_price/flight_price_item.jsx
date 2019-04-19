@@ -18,3 +18,4 @@ const FlightPriceItem = ({flight}) => {
 };
 
 export default FlightPriceItem;
+
