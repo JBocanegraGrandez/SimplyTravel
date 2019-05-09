@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import LocationSearchInputContainer from "../location_search_bar/location_search_input_container";
 import FlightPriceContainer from "../flight_price/flight_price_container";
+import HotelsContainer from '../hotels/hotels_container';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -39,7 +40,8 @@ class Sidebar extends React.Component {
               </div>
             </div>
             <div className="hotels-container">
-              <div className="hotels-inside-container">
+              <HotelsContainer />
+              {/* <div className="hotels-inside-container">
                 <img src="https://www.bingleywalkersarewelcome.org.uk/wp-content/uploads/2015/06/icon-hotel.png" className="hotel-icon" />
                 <span className="hotel-name">Fairmont Hotel</span>
                 <span className="hotel-price">$138</span>
@@ -64,7 +66,7 @@ class Sidebar extends React.Component {
                     <img src="https://images.vexels.com/media/users/3/141424/isolated/preview/e0bb2e1b2183a2d1e675f215ce236e21-wifi-icon-by-vexels.png" className="wifi-icon" />
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="aboutus-container">
               <div className="dropdown-categories">
