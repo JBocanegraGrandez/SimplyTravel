@@ -29,8 +29,8 @@ class Sidebar extends React.Component {
               </span>
             </div>
             <img src="https://cdn1.iconfinder.com/data/icons/arrows-ii/24/Material_icons-02-55-512.png" className="closebtn" onClick={this.closeNav} />
-            <div className="location-search-container">
-              <LocationSearchInputContainer />
+            <div className="sidebar-location-search-container">
+            <LocationSearchInputContainer class="sidebar-location-input-container" />
             </div>
             <div className="flights-container">
               <FlightPriceContainer />
@@ -73,7 +73,7 @@ class Sidebar extends React.Component {
                 <a href="#">About Us</a>
                 <a href="/login">Log In</a>
                 <a href="/signup">Sign Up</a>
-                <a href="#">Take me somewhere</a>
+                <a href="#">Take Me Somewhere!</a>
               </div>
             </div>
           </div>

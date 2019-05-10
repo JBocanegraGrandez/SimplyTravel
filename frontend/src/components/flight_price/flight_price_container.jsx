@@ -5,6 +5,9 @@ import { pinLocation } from "../../actions/location_actions";
 import FlightPrice from './flight_price';
 
 const mapStateToProps = (state) => {
+  console.log(`FLIGHTS STATE:`)
+  console.log(state)
+
   return {
     location: state.entities.location,
     destination: state.entities.destination,

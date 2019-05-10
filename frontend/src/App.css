@@ -139,6 +139,16 @@ table {
   cursor: pointer;
 }
 
+.link-blank2 {
+  /* margin-bottom: 10px; */
+}
+
+.world-logo-nav-button {
+  position: relative;
+  padding: 0;
+  bottom: 5px;
+}
+
 .world-logo {
   width: 50px;
   height: 50px;
@@ -418,6 +428,9 @@ auth-holder
 .signup-title {
   color: #0073bb;
   width: 280px;
+  /* margin-bottom: 14px; */
+  /* height: 100px; */
+  padding-bottom: 10px;
 }
 
 .link {
@@ -603,23 +616,26 @@ font-size: 22px;
   flex-direction: column;
   justify-content: center;
   padding: 20px 15px;
-  margin: 15px;
+  margin: 18px;
   border: 1px solid #E6E6E6;
-  box-shadow: 0 1px 1px lightgrey;
+  /* box-shadow: 0 1px 1px lightgrey; */
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
 }
 
 .individual-selection {
   background-color:rgba(243, 243, 243, 0.89);
   border-radius: 15px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 0 1px 1px lightgrey;
   /* height: 100%; */
   /* width: 100%; */
   /* border-style: double; */
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   /* font-weight: 600; */
 }
 
 .hotel-stats-container {
-  height: 100%;
+  /* height: 100%; */
 }
 
 .hotel-loader {
@@ -751,16 +767,38 @@ font-size: 22px;
 
 /* Location Search Input */
 
+.sidebar-location-search-container {
+  /* box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08); */
+  /* border: honeydew; */
+  /* display: block; */
+  /* width: 372px; */
+  /* width: 100%; */
+  padding: 10px 17px;
+  /* padding: 10px; */
+  /* margin: 10px; */
+  font-size: 16px;
+  /* border-radius: 2px; */
+  /* outline: none; */
+  /* position: relative; */
+  /* box-shadow: 1px 0px 3px 1px #bcbcbc; */
+  /* border: 1px solid #E6E6E6; */
+}
+
 .location-search-input {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
   border: honeydew;
   display: block;
+  /* width: 372px; */
   width: 100%;
   padding: 20px;
+  /* padding: 10px; */
+  /* margin: 10px; */
   font-size: 16px;
   border-radius: 2px;
   outline: none;
   position: relative;
+  /* box-shadow: 1px 0px 3px 1px #bcbcbc; */
+  /* border: 1px solid #E6E6E6; */
 }
 
 .autocomplete-dropdown-container {
@@ -770,6 +808,15 @@ font-size: 22px;
   border-radius: 2px;
   height: 5px;
   margin-top: 29px;
+}
+
+.sidebar-location-input-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  box-shadow: 1px 0px 3px 1px #bcbcbc;
+  border: 1px solid #E6E6E6;
+  /* width: 60%; */
 }
 
 .location-input-container {

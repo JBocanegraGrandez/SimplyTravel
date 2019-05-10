@@ -8,7 +8,9 @@ import PlacesAutocomplete, {
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { address: "" };
+    this.state = { 
+      address: "" 
+    };
   }
 
   handleChange = address => {
@@ -31,7 +33,7 @@ class LocationSearchInput extends React.Component {
       onChange={this.handleChange}
       onSelect={this.handleSelect.bind(this)}
       googleCallbackName="myCallbackFunLocationSearchInputLocationSearchInputc">
-          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => <div className="location-input-container">
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => <div className={this.props.class}>
               <input {...getInputProps({
                   placeholder: "Current location ...",
                   className: "location-search-input"

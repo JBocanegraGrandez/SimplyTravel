@@ -18,7 +18,7 @@ class Index extends React.Component {
       <h1>SimplyTravel</h1>
       <div className='main-page-search-bar-container' >
         <DestinationSearchInputContainer />
-        <LocationSearchInputContainer />
+        <LocationSearchInputContainer class="location-input-container" />
         <Link to="/map" className="link-blank2">
           <button className='world-button'>
             <img className='world-logo' src="http://kabramkrafts.com/wp-content/uploads/2017/04/earth.svg"></img>

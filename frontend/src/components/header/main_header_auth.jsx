@@ -23,7 +23,7 @@ const mainHeaderAuth = ({currentUser, logoutUser}) => {
     <div className="main-header-divider"></div>
     <div className="log-in-header-div2">
       <Link to="/map" className="link-blank2">
-          <button><img className='world-logo' src="http://kabramkrafts.com/wp-content/uploads/2017/04/earth.svg"></img></button></Link>
+          <button className="world-logo-nav-button"><img className='world-logo-nav' src="http://kabramkrafts.com/wp-content/uploads/2017/04/earth.svg"></img></button></Link>
     </div>
     <div className="sign-up-header-div">
     
