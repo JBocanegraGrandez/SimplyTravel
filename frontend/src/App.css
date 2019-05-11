@@ -108,7 +108,6 @@ table {
 
 .main-header-menu-left {
   font-size: 32px;
-  font-family: Helvetica;
   font-weight: 600;
   color: white;
 }
@@ -119,7 +118,7 @@ table {
   flex-direction: row;
   justify-content: space-between;
   width: 334px;
-  font-family: Helvetica;
+  font-family: 'Work Sans', sans-serif;
   padding-right: 30px;
 }
 
@@ -162,7 +161,7 @@ table {
   border-radius: 0px;
   border: 0px;
   border-bottom: 2px solid transparent;
-  font-family: inherit;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
@@ -181,7 +180,7 @@ table {
   border-radius: 0px;
   border: 0px;
   border-bottom: 2px solid transparent;
-  font-family: inherit;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
@@ -196,7 +195,7 @@ table {
   border-radius: 0px;
   border: 0px;
   border-bottom: 2px solid transparent;
-  font-family: inherit;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
@@ -214,7 +213,7 @@ table {
   border-radius: 0px;
   border: 0px;
   border-bottom: 2px solid transparent;
-  font-family: inherit;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
@@ -231,7 +230,7 @@ table {
   color: white;
   border-radius: 5px;
   border: 2px solid white;
-  font-family: inherit;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
@@ -288,6 +287,7 @@ table {
 
 .flight-info-main-container {
   display: flex;
+  font-family: 'Work Sans', sans-serif;
   justify-content: center;
   height: 40px;
   padding: 15px 10px;
@@ -344,7 +344,7 @@ table {
   line-height: 1.5em;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.87);
-  font-family: Arial, sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .flight-booking:hover input {
@@ -467,12 +467,13 @@ auth-holder
 }
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
+  font-family: 'Work Sans', sans-serif;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
 .sidenav a:hover {
@@ -494,10 +495,10 @@ auth-holder
 }
 
 .location-container {
-  font-size: 17px;
-  font-family: 'Kaushan Script', cursive;
-  height: 25px;
-  padding-left: 85px;
+  font-size: 24px;
+  font-family: 'Dancing Script', cursive;
+  height: 35px;
+  padding-left: 60px;
   margin-top: -35px;
   padding-bottom: 15px;
 }
@@ -597,10 +598,10 @@ font-size: 22px;
 .open-button {
   position: absolute;
   z-index: 10;
-  top: 12px;
-  width: 31px;
-  height: 31px;
-  left: 25px;
+  top: 18px;
+  width: 30px;
+  height: 30px;
+  left: 18px;
 }
 
 .open-button-container {
@@ -671,12 +672,14 @@ font-size: 22px;
   width: 450px;
   font-size: 14px;
   font-weight: 600;
-  font-family: serif;
+  font-family: 'Work Sans', sans-serif;
+  /* font-family: serif; */
 }
 
 .hotel-price {
   font-size: 14px;
   font-weight: 600;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .hotel-results-text-container {
@@ -686,7 +689,7 @@ font-size: 22px;
 .hotel-address {
   padding: 10px 15px;
   line-height: 1.1;
-
+  font-family: 'Work Sans', sans-serif;
 }
 
 .marketing-text {

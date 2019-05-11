@@ -33,9 +33,9 @@ const aboutUs = () => {
             <div className="desc">John Huang</div>
             <div className="desc-2">Software Engineer</div>
             <div className="logos">
-              <i class="globe icon" />
-              <i class="github icon" />
-              <i class="linkedin icon" />
+              <a href="http://www.johnhuang.me" target="_blank"><i class="globe icon" /></a>
+              <a href="https://github.com/john-huang-121" target="_blank"><i class="github icon" /></a>
+              <a href="https://www.linkedin.com/in/john-huang1/" target="_blank"><i class="linkedin icon" /></a>
             </div>
           </div>
           <div className="gallery">
