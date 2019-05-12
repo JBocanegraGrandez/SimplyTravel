@@ -281,8 +281,8 @@ table {
   /* height: 425px; */
   flex-direction: column;
   margin: 18px;
-  border: 1px solid #E6E6E6;
-  box-shadow: 1px 0px 3px 1px #bcbcbc;
+  border: 1px solid lightgrey;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.0)
 }
 
 .flight-info-main-container {
@@ -292,11 +292,11 @@ table {
   height: 60px;
   padding: 15px 10px;
   margin: 15px;
-  border: 1px solid #E6E6E6;
   background-color: rgba(243, 243, 243, 0.89);
   border-radius: 15px;
-  box-shadow: 0 1px 1px lightgrey;
   font-size: 14px;
+  border: 1px solid lightgrey;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.0)
 }
 
 .initial-flight-display-container {
@@ -483,6 +483,20 @@ auth-holder
   color: #f1f1f1;
 }
 
+.aboutus-random {
+  font-family: 'Work Sans', sans-serif;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.aboutus-random:hover {
+  cursor: pointer;
+}
+
 .sidenav .closebtn {
   position: absolute;
   font-size: 36px;
@@ -513,8 +527,8 @@ auth-holder
   flex-direction: column;
   padding-top: 30px;
   margin: 18px;
-  border: 1px solid #E6E6E6;
-  box-shadow: 1px 0px 3px 1px #bcbcbc;
+  border: 1px solid lightgrey;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.0);
 }
 
 /* .hotels-container {
@@ -640,9 +654,8 @@ font-size: 22px;
   justify-content: center;
   padding: 20px 15px;
   margin: 18px;
-  border: 1px solid #E6E6E6;
-  /* box-shadow: 0 1px 1px lightgrey; */
-  box-shadow: 1px 0px 3px 1px #bcbcbc;
+  border: 1px solid lightgrey;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.0);
 }
 
 .individual-selection {
@@ -794,7 +807,7 @@ font-size: 22px;
 
 .sidebar-location-search-container {
   /* box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08); */
-  /* border: honeydew; */
+  /* border: lightgrey; */
   /* display: block; */
   /* width: 372px; */
   /* width: 100%; */
@@ -811,8 +824,8 @@ font-size: 22px;
 
 
 .location-search-input {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-  border: honeydew;
+  border: 1px solid lightgrey;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.0);
   display: block;
   /* width: 372px; */
   width: 100%;
@@ -823,8 +836,6 @@ font-size: 22px;
   border-radius: 2px;
   outline: none;
   position: relative;
-  /* box-shadow: 1px 0px 3px 1px #bcbcbc; */
-  /* border: 1px solid #E6E6E6; */
 }
 
 .sidebar-destination-input-container{
@@ -832,8 +843,8 @@ font-size: 22px;
 }
 
 .destination-search-input {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-  border: honeydew;
+  border: 1px solid lightgrey;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.0);
   display: block;
   /* width: 372px; */
   width: 100%;
@@ -844,8 +855,6 @@ font-size: 22px;
   border-radius: 2px;
   outline: none;
   position: relative;
-  /* box-shadow: 1px 0px 3px 1px #bcbcbc; */
-  /* border: 1px solid #E6E6E6; */
 }
 
 .destination-input-container {

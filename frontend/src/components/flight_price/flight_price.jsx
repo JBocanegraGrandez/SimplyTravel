@@ -32,8 +32,7 @@ class FlightPrice extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props
-      .pinFlightPrice({flight: this.state.flight})
+    this.props.pinFlightPrice({flight: this.state.flight})
   }
 
   nearestAirport(nearlong = -122.401352, nearlat = 37.798967, destlong, destlat) { //working on new developer portal

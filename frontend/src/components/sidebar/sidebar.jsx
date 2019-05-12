@@ -16,6 +16,7 @@ class Sidebar extends React.Component {
     };
 
     this.toggleNav = this.toggleNav.bind(this);
+    this.randomDestination = this.randomDestination.bind(this);
   }
 
   toggleNav() {    
@@ -26,6 +27,14 @@ class Sidebar extends React.Component {
       document.getElementById("mySidenav").style.transform = "translateX(-100%)";
       this.setState({ sidebar: true, sidebarClass: "open-button" });
     }
+  }
+
+  randomDestination() {
+    let sampleDest = [[40.7127753, -74.0059728, 'New York City, USA'], [32.5149469, -117.03824710000004, 'Tijuana, Mexico'], [46.227638, 2.213749000000007, 'France'], [51.5073509, -0.12775829999998223, 'London, England']],
+        randomPick = sampleDest[Math.floor(Math.random() * 4)];
+
+    this.props.pinDestination({ lat: randomPick[0], lng: randomPick[1] });
+    setTimeout(alert(randomPick[2]), 1000);
   }
 
   render() {
@@ -41,7 +50,7 @@ class Sidebar extends React.Component {
             <div className="sidebar-location-search-container">
               <LocationSearchInputContainer />
               <div className="sidebar-destination-input-container">
-                <DestinationSearchInputContainer />
+                <DestinationSearchInputContainer style="width:100%" />
               </div>
             </div>
             <div className="flights-container">
@@ -81,7 +90,7 @@ class Sidebar extends React.Component {
                 <Link to="/about">About Us</Link>
                 <Link to="/login">Log In</Link>
                 <Link to="/signup">Sign Up</Link>
-                <Link to="#">Take Me Somewhere!</Link>
+                <div className='aboutus-random' onClick={this.randomDestination}>Take Me Somewhere!</div>
               </div>
             </div>
           </div>
