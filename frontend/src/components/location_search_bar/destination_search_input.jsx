@@ -32,11 +32,11 @@ class DestinationSearchInput extends React.Component {
         googleCallbackName="myCallbackFunc"
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="location-input-container">
+          <div className="destination-input-container">
             <input
               {...getInputProps({
                 placeholder: "Where do you want to go ...",
-                className: "location-search-input"
+                className: "destination-search-input"
               })}
             />
             <div className="autocomplete-dropdown-container">

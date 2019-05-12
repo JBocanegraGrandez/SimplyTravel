@@ -289,7 +289,7 @@ table {
   display: flex;
   font-family: 'Work Sans', sans-serif;
   justify-content: center;
-  height: 40px;
+  height: 60px;
   padding: 15px 10px;
   margin: 15px;
   border: 1px solid #E6E6E6;
@@ -320,17 +320,20 @@ table {
 }
 
 .flight-info-and-booking-container{
+  display: -webkit-flex;
   display: flex;
   position: absolute;
   z-index: 2;
+  -webkit-flex-direction: column;
   flex-direction: column;
-  top: 183px;
-  width: 330px;
-  left: 34px;
+  top: 234px;
+  width: 368px;
+  left: 33px;
   border: 1px solid #E6E6E6;
   background-color: rgba(243, 243, 243, 10.89);
   border-radius: 15px;
-  box-shadow: 0 1px 1px lightgrey}
+  box-shadow: 0 1px 1px lightgrey;
+}
 
 .flight-items-container {
   display: flex;
@@ -459,11 +462,11 @@ auth-holder
   position: absolute;
   z-index: 1;
   background-color: #f9f9f9;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   transition: 1.2s;
   padding-top: 60px;
   height: 100vh;
-  max-width: 408px;
+  max-width: 435px;
 }
 
 .sidenav a {
@@ -477,7 +480,7 @@ auth-holder
 }
 
 .sidenav a:hover {
-    color: #f1f1f1;
+  color: #f1f1f1;
 }
 
 .sidenav .closebtn {
@@ -602,6 +605,25 @@ font-size: 22px;
   width: 30px;
   height: 30px;
   left: 18px;
+  -moz-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+  transition: 1.2s;
+}
+
+.open-button-flip {
+  position: absolute;
+  z-index: 10;
+  top: 18px;
+  width: 30px;
+  height: 30px;
+  left: 388px;
+  -moz-transform: scale(-1, -1);
+  -o-transform: scale(-1, -1);
+  -webkit-transform: scale(-1, -1);
+  transform: scale(-1, -1);
+  transition: 1.2s;
 }
 
 .open-button-container {
@@ -671,14 +693,14 @@ font-size: 22px;
 .hotel-name {
   width: 450px;
   font-size: 14px;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-family: 'Work Sans', sans-serif;
   /* font-family: serif; */
 }
 
 .hotel-price {
   font-size: 14px;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -787,6 +809,7 @@ font-size: 22px;
   /* border: 1px solid #E6E6E6; */
 }
 
+
 .location-search-input {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
   border: honeydew;
@@ -802,6 +825,34 @@ font-size: 22px;
   position: relative;
   /* box-shadow: 1px 0px 3px 1px #bcbcbc; */
   /* border: 1px solid #E6E6E6; */
+}
+
+.sidebar-destination-input-container{
+  width: 100%;
+}
+
+.destination-search-input {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border: honeydew;
+  display: block;
+  /* width: 372px; */
+  width: 100%;
+  padding: 20px;
+  /* padding: 10px; */
+  /* margin: 10px; */
+  font-size: 16px;
+  border-radius: 2px;
+  outline: none;
+  position: relative;
+  /* box-shadow: 1px 0px 3px 1px #bcbcbc; */
+  /* border: 1px solid #E6E6E6; */
+}
+
+.destination-input-container {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: 100%;
 }
 
 .autocomplete-dropdown-container {

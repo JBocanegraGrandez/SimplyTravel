@@ -55,11 +55,13 @@ class FlightPrice extends React.Component {
               })
               .catch(err => {
                 console.log(err);
+                alert('There are no nearby airports at that destination. Enter another destination.');
               });
           });
         })
         .catch(err => {
           console.log(err);
+          alert('There are no airports near you. Enter another location you want to start from.');
         });
     }
   }
@@ -122,9 +124,15 @@ class FlightPrice extends React.Component {
   }
 
   availFlight(combinedFlights) {
-    // let outbound = this.state.flight.results[0].itineraries[0].outbound;
-    let outbound = this.state.flight.services[0].segments;
-    let lastFlight = outbound[outbound.length - 1];
+    let outbound = this.state.flight.services[0].segments,
+        lastFlight = outbound[outbound.length - 1],
+        // moreThanADay = Number(outbound[0].flightSegment.duration.slice(0,1)),
+        parsedDuration = outbound[0].flightSegment.duration.slice(3);
+
+    // if (moreThanADay === 1) {
+    //   parsedDuration
+    // }
+
     return (
       <div className='initial-flight-display-container'>
         <div className="initial-flight-display" onClick={this.toggleDropdown}>
@@ -142,7 +150,7 @@ class FlightPrice extends React.Component {
               Duration: 
             </div>
             <div className="initial-flight-info">
-              {outbound[0].flightSegment.duration}
+              {parsedDuration}
             </div>
           </div>
           <div className="initial-flight-info-container">

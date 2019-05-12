@@ -4,15 +4,15 @@ import { pinLocation } from "../../actions/location_actions";
 
 const mapStateToProps = state => {
   return {
-    // pass our flights data
-    // pass our hotels data
-    // 
+    // sidebarUI: state.ui.status
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     pinLocation: location => dispatch(pinLocation(location)),
+    // sidebarOpen: () => ({type: 'SIDEBAR_TOGGLE', status: true }),
+    // sidebarClose: () => ({type: 'SIDEBAR_TOGGLE', status: false })
   };
 }
 

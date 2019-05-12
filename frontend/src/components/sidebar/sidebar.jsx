@@ -1,43 +1,51 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import LocationSearchInputContainer from "../location_search_bar/location_search_input_container";
+import DestinationSearchInputContainer from "../location_search_bar/destination_search_input_container";
 import FlightPriceContainer from "../flight_price/flight_price_container";
 import HotelsContainer from '../hotels/hotels_container';
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { address: "" };
+    this.state = {
+      address: "",
+      sidebar: false,
+      sidebarClass: "open-button-flip"
+    };
+
+    this.toggleNav = this.toggleNav.bind(this);
   }
 
-  openNav() {
-    document.getElementById("mySidenav").style.transform = "translateX(0)"; //.style.width = "250px"
-  }
-
-  closeNav() {
-    document.getElementById("mySidenav").style.transform = "translateX(-100%)";
+  toggleNav() {    
+    if (this.state.sidebar === true) {
+      document.getElementById("mySidenav").style.transform = "translateX(0)";
+      this.setState({ sidebar: false, sidebarClass: "open-button-flip" });
+    } else {
+      document.getElementById("mySidenav").style.transform = "translateX(-100%)";
+      this.setState({ sidebar: true, sidebarClass: "open-button" });
+    }
   }
 
   render() {
     return <div className="places-autocomplete">
         <div className="open-button-container">
-          <img src="https://www.atipso.com/wp-content/uploads/2014/09/icon_send.png" className="open-button" onClick={this.openNav} />
+        <img src="https://www.atipso.com/wp-content/uploads/2014/09/icon_send.png" className={this.state.sidebarClass} onClick={this.toggleNav} id='side-button' />
           <div id="mySidenav" className="sidenav">
             <div className="location-container">
-              <span className="sidebar-panel" onClick={this.openNav}>
+              <span className="sidebar-panel">
                 Your destination is one click away!
               </span>
             </div>
-            <img src="https://cdn1.iconfinder.com/data/icons/arrows-ii/24/Material_icons-02-55-512.png" className="closebtn" onClick={this.closeNav} />
             <div className="sidebar-location-search-container">
-            <LocationSearchInputContainer class="sidebar-location-input-container" />
+              <LocationSearchInputContainer />
+              <div className="sidebar-destination-input-container">
+                <DestinationSearchInputContainer />
+              </div>
             </div>
             <div className="flights-container">
               <FlightPriceContainer />
-              <div>
-                <img className="airline-logos"
-                  src="http://flyingfood.com/wp-content/uploads/2014/01/airline-Catering-Customers-Slide5-1170x300.jpg" alt="" />
-              </div>
             </div>
             <div className="hotels-container">
               <HotelsContainer />
@@ -70,10 +78,10 @@ class Sidebar extends React.Component {
             </div>
             <div className="aboutus-container">
               <div className="dropdown-categories">
-                <a href="#">About Us</a>
-                <a href="/login">Log In</a>
-                <a href="/signup">Sign Up</a>
-                <a href="#">Take Me Somewhere!</a>
+                <Link to="/about">About Us</Link>
+                <Link to="/login">Log In</Link>
+                <Link to="/signup">Sign Up</Link>
+                <Link to="#">Take Me Somewhere!</Link>
               </div>
             </div>
           </div>
